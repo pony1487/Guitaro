@@ -102,3 +102,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#Guitaro Specfic Keys/IDs/Passwords
+guitaroconfig.py
