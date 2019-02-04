@@ -37,3 +37,8 @@ class FileManager:
                 lesson_file_dict["files"].append(dir)
 
         return json.dumps(lesson_file_dict)
+
+    def get_lesson_path(self, lesson_name):
+        return self.directory + lesson_name
+
+
