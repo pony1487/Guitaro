@@ -105,3 +105,6 @@ venv.bak/
 
 #Guitaro Specfic Keys/IDs/Passwords
 guitaroconfig.py
+
+#audio files
+/audio
