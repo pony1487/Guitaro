@@ -109,4 +109,4 @@ guitaroconfig.py
 #audio files
 /audio
 
-.wav
+*.wav
