@@ -1,13 +1,14 @@
-from flask import Flask, jsonify, request, send_file
+from flask import Flask, jsonify, request, send_file, render_template
 from FileManager import FileManager
 from guitaroconfig import valid_directories, valid_topics, valid_plans
+from os import listdir
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def welcome():
-    return 'Welcome to Guitaro!'
+    return render_template("upload.html")
 
 
 @app.route('/list_topic')
@@ -58,6 +59,41 @@ def get_lesson_from_topic():
                          attachment_filename=lesson_name)
     except FileNotFoundError as e:
         return str(e)
+
+
+@app.route('/get_lesson_from_plan', methods=['GET'])
+def get_lesson_from_plan():
+    plan_path = "plan/"
+    plan = request.args.get("topic")
+    plan += "/"
+
+    lesson_name = request.args.get("lesson_name")
+    file_manager = FileManager(plan_path + plan)
+    print(file_manager.get_lesson_path(lesson_name))
+    try:
+        return send_file(file_manager.get_lesson_path(lesson_name), mimetype="audio/wav", as_attachment=True,
+                         attachment_filename=lesson_name)
+    except FileNotFoundError as e:
+        return str(e)
+
+
+@app.route('/receive_recording_from_user', methods=['POST'])
+def receive_recording_from_user():
+    print("in receive file")
+    if request.method == 'POST':
+        print("in if==POST")
+        if 'file' not in request.files:
+            print("no file uploaded")
+            return "Error"
+        file = request.files['file']
+        return str(file)
+
+
+@app.route('/test_volume')
+def test_volume():
+    f = open("../audio/efs_dir.txt", "r")
+    print(str(f))
+    return str(f)
 
 
 if __name__ == '__main__':
