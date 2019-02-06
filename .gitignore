@@ -108,5 +108,6 @@ guitaroconfig.py
 
 #audio files
 /audio
+/efs
 
 *.wav
