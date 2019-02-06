@@ -5,12 +5,23 @@
     <title>Test Upload</title>
 </head>
    <body>
+   <h1>HARD CODED FOR LOCAL HOST ONLY</h1>
       <h3>test file upload</h3>
       <form action = "http://localhost:5000/receive_recording_from_user" method = "POST"
          enctype = "multipart/form-data">
          <input type = "file" name = "file" />
          <input type = "submit"/>
       </form>
+
+
+      <h3>test AudioAnalysis Upload</h3>
+      <form action = "http://localhost:5000/test_audio_analysis" method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+
+
       <h3>test list plan</h3>
       <form action = "http://localhost:5000/list_plan">
          <input type = "submit"/>

@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, send_file, render_template
 from FileManager import FileManager
+from AudioAnalysis import AudioAnalysis
 from guitaroconfig import valid_directories, valid_topics, valid_plans
 
 app = Flask(__name__)
@@ -92,11 +93,29 @@ def receive_recording_from_user():
         return str(uploaded_file)
 
 
+###############################################################
+# TESTING. Delete once done
+###############################################################
+
 @app.route('/test_volume')
 def test_volume():
     f = open("../audio/plan/beginner/E_Major_LESSON.wav", "r")
     print(str(f))
     return str(f)
+
+
+@app.route('/test_audio_analysis', methods=['POST'])
+def test_audio_analysis():
+    print("in receive file")
+    if request.method == 'POST':
+        print("in if==POST")
+        if 'file' not in request.files:
+            print("no file uploaded")
+            return "Error"
+
+        a = AudioAnalysis(request.files['file'])
+        a.test_print_contents()
+        return ""
 
 
 if __name__ == '__main__':
