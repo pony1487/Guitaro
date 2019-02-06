@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request, send_file, render_template
 from FileManager import FileManager
 from guitaroconfig import valid_directories, valid_topics, valid_plans
-from os import listdir
 
 app = Flask(__name__)
 
@@ -51,6 +50,8 @@ def get_lesson_from_topic():
     topic = request.args.get("topic")
     topic += "/"
 
+    print(topic)
+
     lesson_name = request.args.get("lesson_name")
     file_manager = FileManager(topic_path + topic)
     print(file_manager.get_lesson_path(lesson_name))
@@ -85,13 +86,15 @@ def receive_recording_from_user():
         if 'file' not in request.files:
             print("no file uploaded")
             return "Error"
-        file = request.files['file']
-        return str(file)
+        uploaded_file = request.files['file'].read()
+        print(uploaded_file)
+
+        return str(uploaded_file)
 
 
 @app.route('/test_volume')
 def test_volume():
-    f = open("../audio/efs_dir.txt", "r")
+    f = open("../audio/plan/beginner/E_Major_LESSON.wav", "r")
     print(str(f))
     return str(f)
 

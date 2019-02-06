@@ -12,7 +12,7 @@
   "Volumes": [
     {
       "HostDirectory": "/home/ec2-user/efs",
-      "ContainerDirectory": "/audio"
+      "ContainerDirectory": "/efs"
     }
   ]
 }

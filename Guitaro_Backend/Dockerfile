@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-VOLUME /audio
+#VOLUME /audio
 
 EXPOSE 5000
 

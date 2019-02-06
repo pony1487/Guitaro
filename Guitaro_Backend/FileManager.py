@@ -1,12 +1,19 @@
-from os import listdir
+from os import listdir, path
 from os.path import isfile, join
 import json
 
 
 class FileManager:
     def __init__(self, directory):
-        self.root = "audio/"
-        self.directory = self.root + directory
+        self.base_path = path.dirname(__file__)
+        self.audio_path = path.abspath(path.join(self.base_path, "..", "efs/audio"))
+        self.sub_dir = path.join(self.audio_path, directory)
+
+        #DEBUG
+        print("CONATINER_DEBUG:base_path " + self.base_path)
+        print("CONATINER_DEBUG:audio_path" + self.audio_path)
+        print("CONATINER_DEBUG:sub_dir" + self.sub_dir)
+
 
     def list_directories(self):
         """
@@ -16,10 +23,10 @@ class FileManager:
         directory_dict = dict()
         directory_dict["directories"] = []
 
-        directory_list = listdir(self.directory)
+        directory_list = listdir(self.sub_dir)
 
-        for dir in directory_list:
-            directory_dict["directories"].append(dir)
+        for directory in directory_list:
+            directory_dict["directories"].append(directory)
 
         return json.dumps(directory_dict)
 
@@ -31,14 +38,15 @@ class FileManager:
         lesson_file_dict = dict()
         lesson_file_dict["files"] = []
 
-        directory_list = listdir(self.directory)
-        for dir in directory_list:
-            if isfile(join(self.directory, dir)):
-                lesson_file_dict["files"].append(dir)
+        directory_list = listdir(self.sub_dir)
+        for directory in directory_list:
+            if isfile(join(self.sub_dir, directory)):
+                lesson_file_dict["files"].append(directory)
 
         return json.dumps(lesson_file_dict)
 
     def get_lesson_path(self, lesson_name):
-        return self.directory + lesson_name
+        return self.sub_dir + lesson_name
 
-
+    def get_base_path(self):
+        return str(self.sub_dir)
