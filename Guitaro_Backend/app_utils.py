@@ -1,5 +1,5 @@
 # Remove txt when in production
-ALLOWED_EXTENSIONS = set(['txt', 'wav'])
+ALLOWED_EXTENSIONS = set(['wav'])
 
 
 def allowed_file(filename):

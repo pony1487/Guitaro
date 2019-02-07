@@ -9,12 +9,6 @@ class FileManager:
         self.audio_path = path.abspath(path.join(self.base_path, "..", "efs/audio"))
         self.sub_dir = path.join(self.audio_path, directory)
 
-        #DEBUG
-        print("CONATINER_DEBUG:base_path " + self.base_path)
-        print("CONATINER_DEBUG:audio_path" + self.audio_path)
-        print("CONATINER_DEBUG:sub_dir" + self.sub_dir)
-
-
     def list_directories(self):
         """
 

@@ -2,8 +2,14 @@ from flask import Flask, jsonify, request, send_file, render_template
 from FileManager import FileManager
 from AudioAnalysis import AudioAnalysis
 from guitaroconfig import valid_directories, valid_topics, valid_plans
+from werkzeug.utils import secure_filename
+
+import os
+import guitaroconfig
+import app_utils
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = guitaroconfig.UPLOAD_FOLDER
 
 
 @app.route('/')
@@ -79,18 +85,29 @@ def get_lesson_from_plan():
         return str(e)
 
 
-@app.route('/receive_recording_from_user', methods=['POST'])
-def receive_recording_from_user():
-    print("in receive file")
+@app.route('/analyse_user_recording', methods=['POST'])
+def analyse_user_recording():
+    """
+    Pattern taken from http://flask.pocoo.org/docs/1.0/patterns/fileuploads/
+    :return:
+    """
     if request.method == 'POST':
-        print("in if==POST")
         if 'file' not in request.files:
             print("no file uploaded")
             return "Error"
-        uploaded_file = request.files['file'].read()
-        print(uploaded_file)
 
-        return str(uploaded_file)
+        file = request.files['file']
+
+        if file and app_utils.allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
+            audio_analysis = AudioAnalysis(uploaded_file_path)
+            print(audio_analysis.analyse_notes())
+
+            return "File uploaded"
+        else:
+            return "Wrong File type: Must be wav"
 
 
 ###############################################################
@@ -102,20 +119,6 @@ def test_volume():
     f = open("../audio/plan/beginner/E_Major_LESSON.wav", "r")
     print(str(f))
     return str(f)
-
-
-@app.route('/test_audio_analysis', methods=['POST'])
-def test_audio_analysis():
-    print("in receive file")
-    if request.method == 'POST':
-        print("in if==POST")
-        if 'file' not in request.files:
-            print("no file uploaded")
-            return "Error"
-
-        a = AudioAnalysis(request.files['file'])
-        a.test_print_contents()
-        return ""
 
 
 if __name__ == '__main__':
