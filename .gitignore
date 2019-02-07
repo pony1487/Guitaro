@@ -109,5 +109,6 @@ guitaroconfig.py
 #audio files
 /audio
 /efs
+.user_uploads
 
 *.wav
