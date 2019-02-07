@@ -18,70 +18,61 @@ def welcome():
     return render_template("upload.html")
 
 
-@app.route('/list_topic')
-def list_topic():
+@app.route('/topics')
+def list_topics():
     file_manager = FileManager("topic")
     return file_manager.list_directories()
 
 
-@app.route('/list_plan')
-def list_plan():
+@app.route('/plans')
+def list_plans():
     file_manager = FileManager("plan")
     return file_manager.list_directories()
 
 
-@app.route('/list_files_in_topic')
-def list_files_in_topic():
+@app.route('/topics/<topic>')
+def list_files_in_topic(topic):
     topic_path = "topic/"
-    topic = request.args.get("topic")
     if topic not in valid_topics:
         return "Error: Not a valid topic"
-    print(topic)
     file_manager = FileManager(topic_path + topic)
     return file_manager.list_files_in_directory()
 
 
-@app.route('/list_files_in_plan')
-def list_files_in_plan():
-    plan_path = "plan/"
-    plan = request.args.get("plan")
-    if plan not in valid_plans:
-        return "Error: Not a valid plan"
-    print(plan)
-    file_manager = FileManager(plan_path + plan)
-    return file_manager.list_files_in_directory()
-
-
-@app.route('/get_lesson_from_topic', methods=['GET'])
-def get_lesson_from_topic():
+@app.route('/topics/<topic>/<lesson>', methods=['GET'])
+def get_lesson_from_topic(topic, lesson):
+    # TODO: This seems hacky/brittle. Rewrite
     topic_path = "topic/"
-    topic = request.args.get("topic")
     topic += "/"
-
-    print(topic)
-
-    lesson_name = request.args.get("lesson_name")
     file_manager = FileManager(topic_path + topic)
-    print(file_manager.get_lesson_path(lesson_name))
+
     try:
-        return send_file(file_manager.get_lesson_path(lesson_name), mimetype="audio/wav", as_attachment=True,
-                         attachment_filename=lesson_name)
+        return send_file(file_manager.get_lesson_path(lesson), mimetype="audio/wav", as_attachment=True,
+                         attachment_filename=lesson)
     except FileNotFoundError as e:
         return str(e)
 
 
-@app.route('/get_lesson_from_plan', methods=['GET'])
-def get_lesson_from_plan():
+@app.route('/plans/<plan>')
+def list_files_in_plan(plan):
     plan_path = "plan/"
-    plan = request.args.get("topic")
+
+    if plan not in valid_plans:
+        return "Error: Not a valid plan"
+    file_manager = FileManager(plan_path + plan)
+    return file_manager.list_files_in_directory()
+
+
+@app.route('/plans/<plan>/<lesson>', methods=['GET'])
+def get_lesson_from_plan(plan, lesson):
+    plan_path = "plan/"
     plan += "/"
 
-    lesson_name = request.args.get("lesson_name")
     file_manager = FileManager(plan_path + plan)
-    print(file_manager.get_lesson_path(lesson_name))
+    print(file_manager.get_lesson_path(lesson))
     try:
-        return send_file(file_manager.get_lesson_path(lesson_name), mimetype="audio/wav", as_attachment=True,
-                         attachment_filename=lesson_name)
+        return send_file(file_manager.get_lesson_path(lesson), mimetype="audio/wav", as_attachment=True,
+                         attachment_filename=lesson)
     except FileNotFoundError as e:
         return str(e)
 
@@ -100,7 +91,7 @@ def analyse_user_recording():
         # Users attempt
         file = request.files['file']
 
-        # Retrieve the Lesson
+        # Retrieve the Lesson( How do we know what lesson the user recorded? Which folder is it in? )
 
         if file and app_utils.allowed_file(file.filename):
             filename = secure_filename(file.filename)
