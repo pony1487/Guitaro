@@ -1,6 +1,8 @@
 import aubio
 import itertools
 
+from numpy import hstack, zeros
+
 from PitchSpeller import PitchSpeller
 
 
@@ -82,7 +84,58 @@ class AudioAnalysis:
         return pitch_list_minus_duplicates
 
     def analyse_timing(self):
-        pass
+        """
+        Taken directly from here:
+        https://github.com/aubio/aubio/blob/master/python/demos/demo_onset_plot.py
+
+        However the threshold is set different to compensate for the different signal level of the microphone compared
+        to the direct signal
+        :return: A list of seconds when onset occurs
+        """
+
+        win_s = 512  # fft size
+        hop_s = win_s // 2  # hop size
+
+        filename = self.filepath
+
+        samplerate = 0
+
+        s = aubio.source(filename, samplerate, hop_s)
+        samplerate = s.samplerate
+        o = aubio.onset("default", win_s, hop_s, samplerate)
+
+        # One threshold does not seem to work for all cases
+        o.set_threshold(0.45)
+
+        # list of when peaks happen at time t(seconds)
+        onset_time_list = []
+        # list of onsets, in samples
+        onsets = []
+
+        # storage for plotted data
+        desc = []
+        tdesc = []
+        allsamples_max = zeros(0, )
+        downsample = 2  # to plot n samples / hop_s
+
+        # total number of frames read
+        total_frames = 0
+        while True:
+            samples, read = s()
+
+            if o(samples):
+                # print("%f" % (o.get_last_s()))
+                onset_time_list.append(o.get_last_s())
+                onsets.append(o.get_last())
+            # keep some data to plot it later
+            new_maxes = (abs(samples.reshape(hop_s // downsample, downsample))).max(axis=0)
+            allsamples_max = hstack([allsamples_max, new_maxes])
+            desc.append(o.get_descriptor())
+            tdesc.append(o.get_thresholded_descriptor())
+            total_frames += read
+            if read < hop_s: break
+
+        return onset_time_list
 
     def get_timing_list(self):
         return self.timing_list

@@ -1,4 +1,3 @@
-# Remove txt when in production
 ALLOWED_EXTENSIONS = set(['wav'])
 
 

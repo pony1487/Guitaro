@@ -104,6 +104,7 @@ def analyse_user_recording():
             uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
             audio_analysis = AudioAnalysis(uploaded_file_path)
             print(audio_analysis.analyse_notes())
+            print(audio_analysis.analyse_timing())
 
             return "File uploaded"
         else:
