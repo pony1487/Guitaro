@@ -142,12 +142,3 @@ class AudioAnalysis:
 
     def get_note_list(self):
         return self.note_list
-
-    def test_print_contents(self):
-        """
-        DELETE WHEN DONE TESTING
-        DELETE WHEN DONE TESTING
-        :return:
-        """
-        print("In AudioAnalysis Class")
-        print(self.filepath.read())

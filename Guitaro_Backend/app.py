@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, send_file, render_template
 from FileManager import FileManager
 from AudioAnalysis import AudioAnalysis
+from AudioComparison import AudioComparison
 from guitaroconfig import valid_directories, valid_topics, valid_plans
 from werkzeug.utils import secure_filename
 
@@ -96,16 +97,29 @@ def analyse_user_recording():
             print("no file uploaded")
             return "Error"
 
+        # Users attempt
         file = request.files['file']
+
+        # Retrieve the Lesson
 
         if file and app_utils.allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
             uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
             audio_analysis = AudioAnalysis(uploaded_file_path)
+
+            # DEBUG
             print(audio_analysis.analyse_notes())
             print(audio_analysis.analyse_timing())
+            ###
 
+            user_note_list = audio_analysis.analyse_notes()
+            user_timing_list = audio_analysis.analyse_timing()
+
+            audio_comparison = AudioComparison(user_note_list, user_timing_list, user_note_list, user_timing_list)
+            print(audio_comparison.compare_note_lists())
+            print(audio_comparison.compare_timing_lists())
             return "File uploaded"
         else:
             return "Wrong File type: Must be wav"
