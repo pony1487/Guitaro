@@ -5,7 +5,7 @@
     <title>Test Upload</title>
 </head>
    <body>
-   <h1>HARD CODED FOR LOCAL HOST ONLY</h1>
+   <h1>LOCAL HOST ONLY</h1>
 
       <h3>test AudioAnalysis Upload: Is hardcoded to /analyse/topic/picking/Ascending_Descending_LESSON.wav</h3>
       <form action = "http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav" method = "POST"
@@ -14,15 +14,15 @@
          <input type = "submit"/>
       </form>
 
+      <h1>EC2</h1>
 
-      <h3>test list plan</h3>
-      <form action = "http://localhost:5000/list_plan">
+      <h3>test AudioAnalysis Upload: Is hardcoded to EC2/analyse/topic/picking/Ascending_Descending_LESSON.wav</h3>
+      <form action = "http://guitarobackend-env.ebdsxqv3c6.eu-west-1.elasticbeanstalk.com/analyse/topic/picking/Ascending_Descending_LESSON.wav" method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
          <input type = "submit"/>
       </form>
-      <h3>test list topic</h3>
-      <form action = "http://localhost:5000/list_topic">
-         <input type = "submit"/>
-      </form>
+
 
    </body>
 </html>

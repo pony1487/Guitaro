@@ -93,6 +93,7 @@ def analyse_user_recording(dirone, dirtwo, lesson):
         # Users attempt
         file = request.files['file']
 
+        # Path to where the lesson the user attempted is stored
         lesson_path = "{}/{}".format(dirone, dirtwo)
 
         file_manager = FileManager(lesson_path)
@@ -108,74 +109,18 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             # Analyse the lesson
             lesson_analysis = AudioAnalysis(lesson_file_path)
 
-            # DEBUG
-            # print(audio_analysis.analyse_notes())
-            # print(audio_analysis.analyse_timing())
-            ###
-
             user_note_list = audio_analysis.analyse_notes()
             user_timing_list = audio_analysis.analyse_timing()
 
             lesson_note_list = lesson_analysis.analyse_notes()
             lesson_timing_list = lesson_analysis.analyse_timing()
 
-            audio_comparison = AudioComparison(lesson_note_list, lesson_timing_list, user_note_list, user_timing_list)
-            return str(audio_comparison.compare_note_lists()) + str(audio_comparison.compare_timing_lists())
+            audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
+                                               user_timing_list)
+            # return str(audio_comparison.compare_note_lists()) + str(audio_comparison.compare_timing_lists())
+            return jsonify(audio_comparison.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"
-
-
-'''
-@app.route('/analyse_user_recording', methods=['POST'])
-def analyse_user_recording():
-    """
-    Pattern taken from http://flask.pocoo.org/docs/1.0/patterns/fileuploads/
-    :return:
-    """
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            print("no file uploaded")
-            return "Error"
-
-        # Users attempt
-        file = request.files['file']
-
-        # Retrieve the Lesson( How do we know what lesson the user recorded? Which folder is it in? )
-
-        if file and app_utils.allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-            uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
-            audio_analysis = AudioAnalysis(uploaded_file_path)
-
-            # DEBUG
-            print(audio_analysis.analyse_notes())
-            print(audio_analysis.analyse_timing())
-            ###
-
-            user_note_list = audio_analysis.analyse_notes()
-            user_timing_list = audio_analysis.analyse_timing()
-
-            audio_comparison = AudioComparison(user_note_list, user_timing_list, user_note_list, user_timing_list)
-            print(audio_comparison.compare_note_lists())
-            print(audio_comparison.compare_timing_lists())
-            return "File uploaded"
-        else:
-            return "Wrong File type: Must be wav"
-
-'''
-
-
-###############################################################
-# TESTING. Delete once done
-###############################################################
-
-@app.route('/test_volume')
-def test_volume():
-    f = open("../audio/plan/beginner/E_Major_LESSON.wav", "r")
-    print(str(f))
-    return str(f)
 
 
 if __name__ == '__main__':
