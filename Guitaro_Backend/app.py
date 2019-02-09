@@ -77,6 +77,55 @@ def get_lesson_from_plan(plan, lesson):
         return str(e)
 
 
+@app.route('/analyse/<dirone>/<dirtwo>/<lesson>', methods=['POST'])
+def analyse_user_recording(dirone, dirtwo, lesson):
+    """
+    Pattern taken from http://flask.pocoo.org/docs/1.0/patterns/fileuploads/
+    The route contains the path to the lesson the user is attempting. This is needed to get the lesson and analyse it.
+    :return:
+    """
+
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            print("no file uploaded")
+            return "Error: No File uploaded"
+
+        # Users attempt
+        file = request.files['file']
+
+        lesson_path = "{}/{}".format(dirone, dirtwo)
+
+        file_manager = FileManager(lesson_path)
+        lesson_file_path = file_manager.get_lesson_path("/" + lesson)
+
+        if file and app_utils.allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
+            audio_analysis = AudioAnalysis(uploaded_file_path)
+
+            # Analyse the lesson
+            lesson_analysis = AudioAnalysis(lesson_file_path)
+
+            # DEBUG
+            # print(audio_analysis.analyse_notes())
+            # print(audio_analysis.analyse_timing())
+            ###
+
+            user_note_list = audio_analysis.analyse_notes()
+            user_timing_list = audio_analysis.analyse_timing()
+
+            lesson_note_list = lesson_analysis.analyse_notes()
+            lesson_timing_list = lesson_analysis.analyse_timing()
+
+            audio_comparison = AudioComparison(lesson_note_list, lesson_timing_list, user_note_list, user_timing_list)
+            return str(audio_comparison.compare_note_lists()) + str(audio_comparison.compare_timing_lists())
+        else:
+            return "Wrong File type: Must be wav"
+
+
+'''
 @app.route('/analyse_user_recording', methods=['POST'])
 def analyse_user_recording():
     """
@@ -114,6 +163,8 @@ def analyse_user_recording():
             return "File uploaded"
         else:
             return "Wrong File type: Must be wav"
+
+'''
 
 
 ###############################################################

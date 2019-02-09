@@ -1,0 +1,500 @@
+POST http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav?'file'='Ascending_Descending_INCORRECT_USER.wav'
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_INCORRECT_USER.wav
+--null--
+
+<> 2019-02-09T024032.200.html
+
+###
+
+POST http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav?file='Ascending_Descending_INCORRECT_USER.wav'
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_INCORRECT_USER.wav
+--null--
+
+<> 2019-02-09T024021.200.html
+
+###
+
+POST http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav?files=[('file','Ascending_Descending_INCORRECT_USER.wav')]
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_INCORRECT_USER.wav
+--null--
+
+<> 2019-02-09T023949.200.html
+
+###
+
+POST http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav?file=Ascending_Descending_INCORRECT_USER.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_INCORRECT_USER.wav
+--null--
+
+<> 2019-02-09T023722.200.html
+
+###
+
+POST http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_INCORRECT_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_INCORRECT_USER.wav
+--null--
+
+<> 2019-02-09T023329.200.html
+
+###
+
+POST http://localhost:5000/analyse/topic/picking/Ascending_Descending_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_INCORRECT_USER.wav
+--null--
+
+<> 2019-02-09T023236.200.html
+
+###
+
+POST http://localhost:5000
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-09T022809.405.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-09T021706.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-09T021645.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-09T021642.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-09T021615.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/wrong_file_type_test.txt
+--null--
+
+<> 2019-02-09T021558.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T085133.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T085017.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/wrong_file_type_test.txt
+--null--
+
+<> 2019-02-07T085006.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084921.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084901-1.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084901.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084850.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084836.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084834-1.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084834.200.html
+
+###
+
+POST http://localhost:5000/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084817.200.html
+
+###
+
+POST http://localhost:8080/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+--null
+
+
+< /home/ronan/connollyro@gmail.com/Year4/Semester2/FinalYearProject/FinalYearProject/Audio Files/UserUploadedAudio/Ascending_Descending_USER.wav
+--null--
+
+<> 2019-02-07T084801.401.html
+
+###
+
+POST http://localhost:8080/analyse/plans/beginner/E_Major_LESSON.wav
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-02-07T084643.401.html
+
+###
+
