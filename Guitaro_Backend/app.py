@@ -101,23 +101,24 @@ def analyse_user_recording(dirone, dirtwo, lesson):
 
         if file and app_utils.allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            # Save user file to be analysed
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
-            audio_analysis = AudioAnalysis(uploaded_file_path)
+            user_audio_analysis = AudioAnalysis(uploaded_file_path)
 
-            # Analyse the lesson
+            # Analyse the lesson and the users attempt
             lesson_analysis = AudioAnalysis(lesson_file_path)
 
-            user_note_list = audio_analysis.analyse_notes()
-            user_timing_list = audio_analysis.analyse_timing()
+            user_note_list = user_audio_analysis.analyse_notes()
+            user_timing_list = user_audio_analysis.analyse_timing()
 
             lesson_note_list = lesson_analysis.analyse_notes()
             lesson_timing_list = lesson_analysis.analyse_timing()
 
+            # Compare the lesson and the users attempt
             audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
                                                user_timing_list)
-            # return str(audio_comparison.compare_note_lists()) + str(audio_comparison.compare_timing_lists())
             return jsonify(audio_comparison.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"
