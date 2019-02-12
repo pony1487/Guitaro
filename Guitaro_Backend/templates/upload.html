@@ -24,9 +24,15 @@
       </form>
 
 
-<!--E_major_correct.wav-->
-      <h3>test ChordRecognition Upload: Is hardcoded to /test_chords</h3>
-      <form action = "http://localhost:5000/test_chords" method = "POST"
+      <h3>test ChordRecognition Upload: Is hardcoded to /analyse-chordsplan/beginner/E_major_lesson.wav</h3>
+      <form action = "http://localhost:5000/analyse-chords/plan/beginner/E_major_lesson.wav" method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+
+      <h3>test ChordRecognition Upload: Is hardcoded to EC2/analyse-chordsplan/beginner/E_major_lesson.wav</h3>
+      <form action = "http://guitarobackend-env.ebdsxqv3c6.eu-west-1.elasticbeanstalk.com/analyse-chords/plan/beginner/E_major_lesson.wav" method = "POST"
          enctype = "multipart/form-data">
          <input type = "file" name = "file" />
          <input type = "submit"/>

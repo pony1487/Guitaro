@@ -1,3 +1,12 @@
+"""
+Algorithm based on the paper 'Automatic Chord Recognition from
+Audio Using Enhanced Pitch Class Profile' by Kyogu Lee
+This script computes 12 dimensional chromagram for chord detection
+@author ORCHISAMA
+https://github.com/orchidas/Chord-Recognition
+https://ccrma.stanford.edu/~orchi/
+"""
+
 from __future__ import division
 import numpy as np
 import os
@@ -9,7 +18,8 @@ from chordrecognition.chromagram import compute_chroma
 
 class ChordAnalyser:
     """
-    match_templates.py from https://github.com/orchidas/Chord-Recognition has been modified into a class for use in Guitaro
+    match_templates.py from https://github.com/orchidas/Chord-Recognition has been modified into a class for use in
+    Guitaro.
     """
 
     def __init__(self, filepath):
@@ -29,10 +39,14 @@ class ChordAnalyser:
                 continue
             self.templates.append(self.templates_json[chord])
 
-        """read audio and compute chromagram"""
+        """read audio"""
         (self.fs, self.s) = read(self.filepath)
 
     def compute_chromagram(self):
+        """
+        @author ORCHISAMA. Modified to return the chromagram as a list
+        :return: chromagram as a list
+        """
         x = self.s[::4]
         x = x[:, 1]
         fs = int(self.fs / 4)
@@ -73,29 +87,26 @@ class ChordAnalyser:
             if self.chords[id_chord[n]] != "N":
                 print("Chord: " + str(self.chords[id_chord[n]]))
 
-        # Code added by Ronan Connolly
+        # @author Ronan Connolly
         self.chroma_list = chroma.tolist()
         return self.chroma_list
 
     def get_notes_of_chord(self, chroma_list):
-        notes = {
-            0: "G",
-            1: "G#",
-            2: "A",
-            3: "A#",
-            4: "B",
-            5: "C",
-            6: "C#",
-            7: "D",
-            8: "D#",
-            9: "E",
-            10: "F",
-            11: "F#"}
-        list_chunk_size = int(len(chroma_list) / 3)
+        """
+        @author Ronan Connolly
+        :param chroma_list:
+        :return:
+        """
+        notes = {0: "G", 1: "G#",
+                 2: "A", 3: "A#",
+                 4: "B", 5: "C",
+                 6: "C#", 7: "D",
+                 8: "D#", 9: "E",
+                 10: "F", 11: "F#"}
 
-        g_to_a_sharp_list = []
-        b_to_d_sharp_list = []
-        d_sharp_to_f_sharp = []
+        g_to_a_sharp_list = list()
+        b_to_d_sharp_list = list()
+        d_sharp_to_f_sharp = list()
 
         for i in range(0, len(chroma_list)):
             if i < 4:
@@ -104,30 +115,26 @@ class ChordAnalyser:
                 b_to_d_sharp_list.append(max(chroma_list[i]))
             if i >= 8 and i < 12:
                 d_sharp_to_f_sharp.append(max(chroma_list[i]))
-        """
-        print(g_to_a_sharp_list)
-        print("--------------")
-        print(b_to_d_sharp_list)
-        print("--------------")
-        print(d_sharp_to_f_sharp)
-        """
+
         note_1 = max(g_to_a_sharp_list)
         note_2 = max(b_to_d_sharp_list)
         note_3 = max(d_sharp_to_f_sharp)
 
-        # print(note_1)
-        # print(note_2)
-        # print(note_3)
-
         list_of_note_maxes = g_to_a_sharp_list + b_to_d_sharp_list + d_sharp_to_f_sharp
 
-        # print(list_of_note_maxes)
-
-        print(notes.get(list_of_note_maxes.index(note_1)))
-        print(notes.get(list_of_note_maxes.index(note_2)))
-        print(notes.get(list_of_note_maxes.index(note_3)))
+        list_of_notes = list()
+        list_of_notes.append(notes.get(list_of_note_maxes.index(note_1)))
+        list_of_notes.append(notes.get(list_of_note_maxes.index(note_2)))
+        list_of_notes.append(notes.get(list_of_note_maxes.index(note_3)))
+        return list_of_notes
 
     def plot_figures(self, timestamp, id_chord):
+        """
+        @author ORCHISAMA
+        :param timestamp:
+        :param id_chord:
+        :return:
+        """
         # Plotting all figures
         plt.figure(1)
         notes = ['G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#']

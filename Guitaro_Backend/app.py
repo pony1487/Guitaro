@@ -3,6 +3,7 @@ from FileManager import FileManager
 from AudioAnalysis import AudioAnalysis
 from AudioComparison import AudioComparison
 from chordrecognition.ChordAnalyser import ChordAnalyser
+from chordrecognition.ChordComparison import ChordComparison
 from guitaroconfig import valid_directories, valid_topics, valid_plans
 from werkzeug.utils import secure_filename
 
@@ -125,8 +126,8 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             return "Wrong File type: Must be wav"
 
 
-@app.route('/test_chords', methods=['POST'])
-def test_chords():
+@app.route('/analyse-chords/<dirone>/<dirtwo>/<lesson>', methods=['POST'])
+def analyse_user_chords(dirone, dirtwo, lesson):
     if request.method == 'POST':
         if 'file' not in request.files:
             print("no file uploaded")
@@ -135,6 +136,12 @@ def test_chords():
         # Users attempt
         file = request.files['file']
 
+        # Path to where the lesson the user attempted is stored
+        lesson_path = "{}/{}".format(dirone, dirtwo)
+
+        file_manager = FileManager(lesson_path)
+        lesson_file_path = file_manager.get_lesson_path("/" + lesson)
+
         if file and app_utils.allowed_file(file.filename):
             filename = secure_filename(file.filename)
             # Save user file to be analysed
@@ -142,10 +149,18 @@ def test_chords():
 
             uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
 
-            chord_analyser = ChordAnalyser(uploaded_file_path)
-            chroma_list = chord_analyser.compute_chromagram()
-            chord_analyser.get_notes_of_chord(chroma_list)
-    return "test"
+            user_chord_analyser = ChordAnalyser(uploaded_file_path)
+            user_chroma_list = user_chord_analyser.compute_chromagram()
+            user_note_list = user_chord_analyser.get_notes_of_chord(user_chroma_list)
+
+            lesson_chord_analyser = ChordAnalyser(lesson_file_path)
+            lesson_chroma_list = lesson_chord_analyser.compute_chromagram()
+            lesson_note_list = lesson_chord_analyser.get_notes_of_chord(lesson_chroma_list)
+
+            chord_comparision = ChordComparison(lesson, user_note_list, lesson_note_list)
+            return jsonify(chord_comparision.get_comparision_dict())
+        else:
+            return "Wrong File type: Must be wav"
 
 
 if __name__ == '__main__':

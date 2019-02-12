@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521660ad-b1a7-4b01-8ebf-a85f9a043d7a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chordrecognition/chromagram.py" beforeDir="false" afterPath="$PROJECT_DIR$/chordrecognition/chromagram.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chordrecognition/create_templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/chordrecognition/create_templates.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chordrecognition/hmm.py" beforeDir="false" afterPath="$PROJECT_DIR$/chordrecognition/hmm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chordrecognition/match_templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/chordrecognition/match_templates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chordrecognition/ChordAnalyser.py" beforeDir="false" afterPath="$PROJECT_DIR$/chordrecognition/ChordAnalyser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chordrecognition/match_templates.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/upload.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
@@ -17,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Guitaro_Backend$Guitaro_Backend.coverage" NAME="Guitaro_Backend Coverage Results" MODIFIED="1549980575818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Guitaro_Backend$Guitaro_Backend.coverage" NAME="Guitaro_Backend Coverage Results" MODIFIED="1549982918500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1971039829">
@@ -42,41 +41,41 @@
         <counts>
           <entry key="Dockerfile" value="67" />
           <entry key="dummy" value="21" />
-          <entry key="html" value="290" />
+          <entry key="html" value="317" />
           <entry key="json" value="24" />
           <entry key="md" value="1" />
-          <entry key="py" value="12302" />
+          <entry key="py" value="12996" />
           <entry key="txt" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Dockerfile" value="67" />
-          <entry key="HTML" value="290" />
+          <entry key="HTML" value="317" />
           <entry key="JSON" value="24" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="55" />
-          <entry key="Python" value="12302" />
+          <entry key="Python" value="12996" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Dockerfile" value="4" />
-          <entry key="html" value="8" />
+          <entry key="html" value="9" />
           <entry key="json" value="7" />
           <entry key="md" value="1" />
-          <entry key="py" value="37" />
+          <entry key="py" value="42" />
           <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Dockerfile" value="4" />
-          <entry key="HTML" value="8" />
+          <entry key="HTML" value="9" />
           <entry key="JSON" value="7" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="37" />
+          <entry key="Python" value="42" />
         </counts>
       </usages-collector>
     </session>
@@ -86,27 +85,42 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="147" selection-start-line="147" selection-end-line="147" />
+            <state relative-caret-position="271">
+              <caret line="165" selection-start-line="165" selection-end-line="165" />
               <folding>
                 <element signature="e#0#69#0" expanded="true" />
                 <element signature="e#826#1024#0" />
                 <element signature="e#1129#1489#0" />
                 <element signature="e#1554#1746#0" />
                 <element signature="e#1847#2204#0" />
-                <marker date="1549981029483" expanded="true" signature="4987:4990" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chordrecognition/match_templates.py">
+        <entry file="file://$PROJECT_DIR$/AudioComparison.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+            <state relative-caret-position="316">
+              <caret line="52" selection-start-line="52" selection-end-line="53" selection-end-column="73" />
               <folding>
-                <element signature="e#293#324#0" expanded="true" />
+                <element signature="e#2620#3133#0" />
+                <element signature="e#3230#3902#0" />
+                <element signature="e#3999#5030#0" />
+                <marker date="1549742372937" expanded="true" signature="22:23" ph="..." />
+                <marker date="1549742372937" expanded="true" signature="1188:2578" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chordrecognition/ChordComparison.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+              <folding>
+                <marker date="1549984541056" expanded="true" signature="22:27" ph="..." />
               </folding>
             </state>
           </provider>
@@ -115,13 +129,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chordrecognition/ChordAnalyser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="722">
-              <caret line="137" column="23" lean-forward="true" selection-start-line="137" selection-start-column="23" selection-end-line="137" selection-end-column="23" />
+            <state relative-caret-position="346">
+              <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-                <element signature="e#2731#3245#0" />
-                <marker date="1549981014607" expanded="true" signature="356:362" ph="..." />
-                <marker date="1549981014607" expanded="true" signature="455:456" ph="..." />
+                <marker date="1549982002467" expanded="true" signature="654:660" ph="..." />
+                <marker date="1549982002467" expanded="true" signature="753:754" ph="..." />
+                <marker date="1549982002467" expanded="true" signature="4534:4543" ph="..." />
               </folding>
             </state>
           </provider>
@@ -156,6 +170,8 @@
       <find>templates</find>
       <find>id_chord</find>
       <find>chord_templates</find>
+      <find>match_templates</find>
+      <find>chord_analyser</find>
     </findStrings>
     <replaceStrings>
       <replace>bucket_response</replace>
@@ -189,10 +205,11 @@
         <option value="$PROJECT_DIR$/chordrecognition/hmm.py" />
         <option value="$PROJECT_DIR$/chordrecognition/create_templates.py" />
         <option value="$PROJECT_DIR$/chordrecognition/chromagram.py" />
-        <option value="$PROJECT_DIR$/templates/upload.html" />
         <option value="$PROJECT_DIR$/chordrecognition/match_templates.py" />
         <option value="$PROJECT_DIR$/chordrecognition/MatchTemplates.py" />
         <option value="$PROJECT_DIR$/chordrecognition/ChordAnalyser.py" />
+        <option value="$PROJECT_DIR$/templates/upload.html" />
+        <option value="$PROJECT_DIR$/chordrecognition/ChordComparison.py" />
         <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
@@ -226,6 +243,11 @@
               <item name="Guitaro_Backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="Guitaro_Backend" type="462c0819:PsiDirectoryNode" />
               <item name="chordrecognition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Guitaro_Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Guitaro_Backend" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -591,12 +613,12 @@
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18030304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18030304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952693" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3735726" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27732465" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -665,17 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AudioComparison.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="96" column="40" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
-          <folding>
-            <marker date="1549742372937" expanded="true" signature="22:23" ph="..." />
-            <marker date="1549742372937" expanded="true" signature="1188:2578" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chordrecognition/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -693,38 +704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chordrecognition/hmm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-          <folding>
-            <element signature="e#162#193#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chordrecognition/create_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chordrecognition/chord_templates.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="73" selection-start-column="73" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chordrecognition/chromagram.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-          <folding>
-            <element signature="e#212#243#0" expanded="true" />
-            <element signature="e#874#1923#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,23 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/upload.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chordrecognition/match_templates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-          <folding>
-            <element signature="e#293#324#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -775,30 +741,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/chordrecognition/hmm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chordrecognition/create_templates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chordrecognition/chromagram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chordrecognition/match_templates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/upload.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="34" column="89" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chordrecognition/ChordAnalyser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="722">
-          <caret line="137" column="23" lean-forward="true" selection-start-line="137" selection-start-column="23" selection-end-line="137" selection-end-column="23" />
+        <state relative-caret-position="346">
+          <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#2731#3245#0" />
-            <marker date="1549981014607" expanded="true" signature="356:362" ph="..." />
-            <marker date="1549981014607" expanded="true" signature="455:456" ph="..." />
+            <marker date="1549982002467" expanded="true" signature="654:660" ph="..." />
+            <marker date="1549982002467" expanded="true" signature="753:754" ph="..." />
+            <marker date="1549982002467" expanded="true" signature="4534:4543" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AudioComparison.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="52" selection-start-line="52" selection-end-line="53" selection-end-column="73" />
+          <folding>
+            <element signature="e#2620#3133#0" />
+            <element signature="e#3230#3902#0" />
+            <element signature="e#3999#5030#0" />
+            <marker date="1549742372937" expanded="true" signature="22:23" ph="..." />
+            <marker date="1549742372937" expanded="true" signature="1188:2578" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chordrecognition/ChordComparison.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+          <folding>
+            <marker date="1549984541056" expanded="true" signature="22:27" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
+        <state relative-caret-position="271">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
           <folding>
             <element signature="e#0#69#0" expanded="true" />
             <element signature="e#826#1024#0" />
             <element signature="e#1129#1489#0" />
             <element signature="e#1554#1746#0" />
             <element signature="e#1847#2204#0" />
-            <marker date="1549981029483" expanded="true" signature="4987:4990" ph="..." />
           </folding>
         </state>
       </provider>
