@@ -1,3 +1,7 @@
+@author ORCHISAMA<br>
+https://github.com/orchidas/Chord-Recognition
+https://ccrma.stanford.edu/~orchi/
+
 # Chord-Recognition
 Automatic chord recognition in Python
 
