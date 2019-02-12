@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, send_file, render_template
 from FileManager import FileManager
 from AudioAnalysis import AudioAnalysis
 from AudioComparison import AudioComparison
+from chordrecognition.ChordAnalyser import ChordAnalyser
 from guitaroconfig import valid_directories, valid_topics, valid_plans
 from werkzeug.utils import secure_filename
 
@@ -122,6 +123,29 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             return jsonify(audio_comparison.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"
+
+
+@app.route('/test_chords', methods=['POST'])
+def test_chords():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            print("no file uploaded")
+            return "Error: No File uploaded"
+
+        # Users attempt
+        file = request.files['file']
+
+        if file and app_utils.allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            # Save user file to be analysed
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
+
+            chord_analyser = ChordAnalyser(uploaded_file_path)
+            chroma_list = chord_analyser.compute_chromagram()
+            chord_analyser.get_notes_of_chord(chroma_list)
+    return "test"
 
 
 if __name__ == '__main__':

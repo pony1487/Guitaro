@@ -1,6 +1,8 @@
 """Automatic chord recogniton with HMM, as suggested by Juan P. Bello in
 'A mid level representation for harmonic content in music signals'
-@author ORCHISAMA"""
+@author ORCHISAMA
+https://github.com/orchidas/Chord-Recognition
+"""
 
 from __future__ import division
 from chordrecognition.chromagram import compute_chroma

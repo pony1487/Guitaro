@@ -3,6 +3,7 @@ Algorithm based on the paper 'Automatic Chord Recognition from
 Audio Using Enhanced Pitch Class Profile' by Kyogu Lee
 This script computes 12 dimensional chromagram for chord detection
 @author ORCHISAMA
+https://github.com/orchidas/Chord-Recognition
 """
 
 """Create pitch profile template for 12 major and 12 minor chords and save them in a json file

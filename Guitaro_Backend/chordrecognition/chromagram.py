@@ -3,6 +3,7 @@ Algorithm based on the paper 'Automatic Chord Recognition from
 Audio Using Enhanced Pitch Class Profile' by Kyogu Lee
 This script computes 12 dimensional chromagram for chord detection
 @author ORCHISAMA
+https://github.com/orchidas/Chord-Recognition
 """
 
 from __future__ import division

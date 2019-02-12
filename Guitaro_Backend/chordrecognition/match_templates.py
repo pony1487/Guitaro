@@ -3,6 +3,8 @@ Algorithm based on the paper 'Automatic Chord Recognition from
 Audio Using Enhanced Pitch Class Profile' by Kyogu Lee
 This script computes 12 dimensional chromagram for chord detection
 @author ORCHISAMA
+https://github.com/orchidas/Chord-Recognition
+https://ccrma.stanford.edu/~orchi/
 """
 
 from __future__ import division
@@ -12,9 +14,6 @@ import matplotlib.pyplot as plt
 from scipy.io.wavfile import read
 import json
 from chordrecognition.chromagram import compute_chroma
-
-from librosa import display
-
 
 """Correlate chord with existing binary chord templates to find best batch"""
 
@@ -30,8 +29,6 @@ for chord in chords:
     if chord is 'N':
         continue
     templates.append(templates_json[chord])
-
-#print(templates)
 
 """read audio and compute chromagram"""
 directory = os.getcwd() + '/test_chords/'
@@ -71,22 +68,22 @@ for n in range(nFrames):
     max_cor[n] = np.max(cor_vec)
     id_chord[n] = np.argmax(cor_vec) + 1
 
+# Code added by Ronan Connolly
 print("Shape:" + str(chroma.shape))
 l = chroma.tolist()
 
-#print(l)
-#chroma_file = open("debug_guitar_chords/C_major_one_wrong_chroma.txt","w")
-#chroma_file.write(str(l))
+print(l)
+
+# print(l)
+# chroma_file = open("debug_guitar_chords/C_major_one_wrong_chroma.txt","w")
+# chroma_file.write(str(l))
 
 # if max_cor[n] < threshold, then no chord is played
 # might need to change threshold value
 id_chord[np.where(max_cor < 0.8 * np.max(max_cor))] = 0
 
 for n in range(nFrames):
-    #print(timestamp[n], chords[id_chord[n]])
-    pass
-
-
+    print(timestamp[n], chords[id_chord[n]])
 
 # Plotting all figures
 plt.figure(1)
