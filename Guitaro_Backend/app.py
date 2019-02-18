@@ -1,7 +1,8 @@
-from flask import Flask, jsonify, request, send_file, render_template
+from flask import Flask, jsonify, request, send_file, render_template, Response
 from FileManager import FileManager
 from AudioAnalysis import AudioAnalysis
 from AudioComparison import AudioComparison
+from PracticeGenerator import PracticeGenerator
 from chordrecognition.ChordAnalyser import ChordAnalyser
 from chordrecognition.ChordComparison import ChordComparison
 from guitaroconfig import valid_directories, valid_topics, valid_plans
@@ -10,6 +11,7 @@ from werkzeug.utils import secure_filename
 import os
 import guitaroconfig
 import app_utils
+import json
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = guitaroconfig.UPLOAD_FOLDER
@@ -161,6 +163,41 @@ def analyse_user_chords(dirone, dirtwo, lesson):
             return jsonify(chord_comparision.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"
+
+
+@app.route('/practice-generator')
+def practice_generator_form():
+    """
+    This is for testing only. When creating client use the topics route to populate the select list
+    :return:
+    """
+    file_manager = FileManager("topic")
+    topics_str = file_manager.list_directories()
+
+    # convert from str
+    json_of_topics = json.loads(topics_str)
+    topic_list = json_of_topics['directories']
+    return render_template("practice_generator.html", list_of_topics=topic_list)
+
+
+@app.route('/generate-routine', methods=['POST'])
+def generate_routine():
+    if request.method == 'POST':
+        multiselect = request.form.getlist('Topics')
+        time = request.form['Time']
+
+        form_dict = dict()
+        form_dict["topics"] = multiselect
+        form_dict["time"] = time
+
+        # DEBUG
+        single_topic = multiselect[0]
+        practice_generator = PracticeGenerator(single_topic)
+        practice_generator.get_topic_path()
+        practice_generator.get_random_lesson_names()
+
+        return jsonify(form_dict)
+    return Response(status=400)
 
 
 if __name__ == '__main__':
