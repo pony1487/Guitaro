@@ -7,6 +7,7 @@ from chordrecognition.ChordAnalyser import ChordAnalyser
 from chordrecognition.ChordComparison import ChordComparison
 from guitaroconfig import valid_directories, valid_topics, valid_plans
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
 
 import os
 import guitaroconfig
@@ -14,6 +15,7 @@ import app_utils
 import json
 
 app = Flask(__name__)
+CORS(app)
 app.config['UPLOAD_FOLDER'] = guitaroconfig.UPLOAD_FOLDER
 
 
@@ -25,13 +27,13 @@ def welcome():
 @app.route('/topics')
 def list_topics():
     file_manager = FileManager("topic")
-    return file_manager.list_directories()
+    return jsonify(file_manager.list_directories())
 
 
 @app.route('/plans')
 def list_plans():
     file_manager = FileManager("plan")
-    return file_manager.list_directories()
+    return jsonify(file_manager.list_directories())
 
 
 @app.route('/topics/<topic>')
@@ -40,7 +42,7 @@ def list_files_in_topic(topic):
     if topic not in valid_topics:
         return "Error: Not a valid topic"
     file_manager = FileManager(topic_path + topic)
-    return file_manager.list_files_in_directory()
+    return jsonify(file_manager.list_files_in_directory())
 
 
 @app.route('/topics/<topic>/<lesson>', methods=['GET'])
@@ -64,7 +66,7 @@ def list_files_in_plan(plan):
     if plan not in valid_plans:
         return "Error: Not a valid plan"
     file_manager = FileManager(plan_path + plan)
-    return file_manager.list_files_in_directory()
+    return jsonify(file_manager.list_files_in_directory())
 
 
 @app.route('/plans/<plan>/<lesson>', methods=['GET'])
@@ -102,7 +104,7 @@ def analyse_user_recording(dirone, dirtwo, lesson):
 
         file_manager = FileManager(lesson_path)
         lesson_file_path = file_manager.get_lesson_path("/" + lesson)
-
+        """
         if file and app_utils.allowed_file(file.filename):
             filename = secure_filename(file.filename)
             # Save user file to be analysed
@@ -126,7 +128,27 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             return jsonify(audio_comparison.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"
+        """
+        filename = secure_filename(file.filename)
+        # Save user file to be analysed
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+        uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
+        user_audio_analysis = AudioAnalysis(uploaded_file_path)
+
+        # Analyse the lesson and the users attempt
+        lesson_analysis = AudioAnalysis(lesson_file_path)
+
+        user_note_list = user_audio_analysis.analyse_notes()
+        user_timing_list = user_audio_analysis.analyse_timing()
+
+        lesson_note_list = lesson_analysis.analyse_notes()
+        lesson_timing_list = lesson_analysis.analyse_timing()
+
+        # Compare the lesson and the users attempt
+        audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
+                                           user_timing_list)
+        return jsonify(audio_comparison.get_comparision_dict())
 
 @app.route('/analyse-chords/<dirone>/<dirtwo>/<lesson>', methods=['POST'])
 def analyse_user_chords(dirone, dirtwo, lesson):
@@ -190,13 +212,23 @@ def generate_routine():
         form_dict["topics"] = multiselect
         form_dict["time"] = time
 
-        # DEBUG
+        # DEBUG. Will need to handle multiple topics
         single_topic = multiselect[0]
         practice_generator = PracticeGenerator(single_topic)
         practice_generator.get_topic_path()
         practice_generator.get_random_lesson_names()
 
         return jsonify(form_dict)
+    return Response(status=400)
+
+
+@app.route('/test-post', methods=['POST'])
+def test_post():
+    if request.method == 'POST':
+        d = dict()
+        d["message"] = "Success"
+        print(d)
+        return jsonify(d)
     return Response(status=400)
 
 

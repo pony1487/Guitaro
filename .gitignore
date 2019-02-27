@@ -111,6 +111,6 @@ guitaroconfig.py
 /efs
 ./user_uploads
 /user_uploads
-
+Guitaro_Backend/user_uploads/
 *.wav
 *.zip

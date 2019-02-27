@@ -12,7 +12,7 @@ class FileManager:
     def list_directories(self):
         """
 
-        :return: string representation of the json containing directories
+        :return: dict containing directory names. This is jsonified to be sent back to client
         """
         directory_dict = dict()
         directory_dict["directories"] = []
@@ -22,12 +22,12 @@ class FileManager:
         for directory in directory_list:
             directory_dict["directories"].append(directory)
 
-        return json.dumps(directory_dict)
+        return directory_dict
 
     def list_files_in_directory(self):
         """
         Creates a dictionary to store file names from a directory.
-        :return: string representation of the json containing filenames(lessons)
+        :return: dict containing directory names. This is jsonified to be sent back to client
         """
         lesson_file_dict = dict()
         lesson_file_dict["files"] = []
@@ -37,7 +37,7 @@ class FileManager:
             if isfile(join(self.sub_dir, directory)):
                 lesson_file_dict["files"].append(directory)
 
-        return json.dumps(lesson_file_dict)
+        return lesson_file_dict
 
     def get_lesson_path(self, lesson_name):
         return self.sub_dir + lesson_name
