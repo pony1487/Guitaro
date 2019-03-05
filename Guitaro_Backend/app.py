@@ -99,12 +99,15 @@ def analyse_user_recording(dirone, dirtwo, lesson):
         # Users attempt
         file = request.files['file']
 
+        print(file.filename)
+
         # Path to where the lesson the user attempted is stored
         lesson_path = "{}/{}".format(dirone, dirtwo)
 
         file_manager = FileManager(lesson_path)
         lesson_file_path = file_manager.get_lesson_path("/" + lesson)
-        """
+        bpm = file_manager.get_tempo_from_file_name(lesson)
+
         if file and app_utils.allowed_file(file.filename):
             filename = secure_filename(file.filename)
             # Save user file to be analysed
@@ -124,31 +127,11 @@ def analyse_user_recording(dirone, dirtwo, lesson):
 
             # Compare the lesson and the users attempt
             audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
-                                               user_timing_list)
+                                               user_timing_list,bpm)
             return jsonify(audio_comparison.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"
-        """
-        filename = secure_filename(file.filename)
-        # Save user file to be analysed
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
-        user_audio_analysis = AudioAnalysis(uploaded_file_path)
-
-        # Analyse the lesson and the users attempt
-        lesson_analysis = AudioAnalysis(lesson_file_path)
-
-        user_note_list = user_audio_analysis.analyse_notes()
-        user_timing_list = user_audio_analysis.analyse_timing()
-
-        lesson_note_list = lesson_analysis.analyse_notes()
-        lesson_timing_list = lesson_analysis.analyse_timing()
-
-        # Compare the lesson and the users attempt
-        audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
-                                           user_timing_list)
-        return jsonify(audio_comparison.get_comparision_dict())
 
 @app.route('/analyse-chords/<dirone>/<dirtwo>/<lesson>', methods=['POST'])
 def analyse_user_chords(dirone, dirtwo, lesson):
