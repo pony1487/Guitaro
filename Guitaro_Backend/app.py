@@ -26,19 +26,19 @@ def welcome():
 
 @app.route('/topics')
 def list_topics():
-    file_manager = FileManager("topic")
+    file_manager = FileManager("topics")
     return jsonify(file_manager.list_directories())
 
 
 @app.route('/plans')
 def list_plans():
-    file_manager = FileManager("plan")
+    file_manager = FileManager("plans")
     return jsonify(file_manager.list_directories())
 
 
 @app.route('/topics/<topic>')
 def list_files_in_topic(topic):
-    topic_path = "topic/"
+    topic_path = "topics/"
     if topic not in valid_topics:
         return "Error: Not a valid topic"
     file_manager = FileManager(topic_path + topic)
@@ -48,7 +48,7 @@ def list_files_in_topic(topic):
 @app.route('/topics/<topic>/<lesson>', methods=['GET'])
 def get_lesson_from_topic(topic, lesson):
     # TODO: This seems hacky/brittle. Rewrite
-    topic_path = "topic/"
+    topic_path = "topics/"
     topic += "/"
     file_manager = FileManager(topic_path + topic)
 
@@ -61,7 +61,7 @@ def get_lesson_from_topic(topic, lesson):
 
 @app.route('/plans/<plan>')
 def list_files_in_plan(plan):
-    plan_path = "plan/"
+    plan_path = "plans/"
 
     if plan not in valid_plans:
         return "Error: Not a valid plan"
@@ -71,7 +71,7 @@ def list_files_in_plan(plan):
 
 @app.route('/plans/<plan>/<lesson>', methods=['GET'])
 def get_lesson_from_plan(plan, lesson):
-    plan_path = "plan/"
+    plan_path = "plans/"
     plan += "/"
 
     file_manager = FileManager(plan_path + plan)
