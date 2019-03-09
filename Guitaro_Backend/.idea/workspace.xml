@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521660ad-b1a7-4b01-8ebf-a85f9a043d7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AudioAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/AudioAnalysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PitchSpeller.py" beforeDir="false" afterPath="$PROJECT_DIR$/PitchSpeller.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +55,7 @@
           <entry key="html" value="499" />
           <entry key="json" value="24" />
           <entry key="md" value="11" />
-          <entry key="py" value="19000" />
+          <entry key="py" value="19282" />
           <entry key="txt" value="44" />
         </counts>
       </usages-collector>
@@ -69,7 +66,7 @@
           <entry key="JSON" value="24" />
           <entry key="Markdown" value="11" />
           <entry key="PLAIN_TEXT" value="65" />
-          <entry key="Python" value="19000" />
+          <entry key="Python" value="19282" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -134,8 +131,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Notation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
+            <state relative-caret-position="491">
+              <caret line="511" lean-forward="true" selection-start-line="511" selection-end-line="511" />
             </state>
           </provider>
         </entry>
@@ -833,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Notation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
+        <state relative-caret-position="491">
+          <caret line="511" lean-forward="true" selection-start-line="511" selection-end-line="511" />
         </state>
       </provider>
     </entry>

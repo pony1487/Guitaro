@@ -257,7 +257,8 @@ print(seen)
 """
 
 """
-A working version for multiple occurances of the same note on the same string-ascending
+A working version for multiple occurances of the same note on the same string-ascending. Doesnt work for every case
+See the one below this one for a better way to do it perhaps
 """
 
 """
@@ -392,4 +393,122 @@ for i in range(0, len(strings)):
 print(string_seen_buf)
 print(seen)
 ###################################################################################
+"""
+
+
+"""
+This way used a 2d matrix. Where a note is played that index is set to one. Still a work in progress. 
+THIS IS VERY PROMISING!
+"""
+
+"""
+import numpy as np
+from pandas import *
+
+strings = [
+    [82.41, 87.31, 92.50, 98.00, 103.83, 110.00, 116.54, 123.47, 130.81, 138.59, 146.83, 155.56, 164.81],
+    [110.00, 116.54, 123.47, 130.81, 138.59, 146.83, 155.56, 164.81, 174.61, 185.00, 196.00, 207.65, 220.00],
+    [146.83, 155.56, 164.81, 174.61, 185.00, 196.00, 207.65, 220.00, 233.08, 246.94, 261.63, 277.18, 293.66],
+    [196.00, 207.65, 220.00, 233.08, 246.94, 261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00],
+    [246.94, 261.63, 277.18, 293.66,311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88],
+    [329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25, 554.37, 587.33, 622.25, 659.25]
+]
+
+fret_frequencies_to_string_number_mapping = {
+    "0": "6",
+    "1": "5",
+    "2": "4",
+    "3": "3",
+    "4": "2",
+    "5": "1"
+}
+
+def find_nearest(array, value):
+    array = np.asarray(array)
+    index = (np.abs(array - value)).argmin()
+    return array[index]
+
+#init a two d list the representing 6 strings and 12 frets per string(13 across to account for the open string)
+played_note_locations = [[0 for i in range(13)] for j in range(6)]
+
+
+# Pentatonic ascending
+#notes_in_recording = ['A','C','D','E','G','A']
+#freq_in_recording = [110,130,146,164,196,220]
+
+# Pentonic Descending
+#notes_in_recording = ['A','G','E','D','C','A']
+#freq_in_recording = [220,196,164,146,130,110]
+
+# Pentatonic ascending and descending
+#notes_in_recording = ['A','C','D','E','G','A','G','E','D','C','A']
+#freq_in_recording = [110,130,146,164,196,220,196,164,146,130,110]
+
+# Repeating Notes
+#notes_in_recording = ['A','C','A','C','D','E','D','E','C','A']
+#freq_in_recording = [110,130,110,130,146,164,146,164,130,110]
+
+# Desceding with repeating notes
+#notes_in_recording = ['A','G','E','D','E','D','C','A']
+#freq_in_recording = [220,196,164,146,164,146,130,110]
+
+# Natural Minor Ascending Descending
+notes_in_recording = ['A','B','C','B','C','D','C','D','E','D','E','F']
+freq_in_recording = [110,123,130,123,130,146,130,146,164,146,164,174]
+
+# Fill 2d array with locations of notes played
+for i in range(0,len(strings)):
+  gtr_string = strings[i]
+
+  for j in range(0,len(freq_in_recording)):
+
+    freq = freq_in_recording[j]
+
+    freq = find_nearest(gtr_string,freq)
+    #print(freq)
+
+    if freq in gtr_string:
+      fret = gtr_string.index(freq)
+      s = "freq: {} fret: {}".format(freq,fret)
+      #print("i: " + str(i) + " j: " + str(j))
+      played_note_locations[i][fret] = 1
+  
+
+
+print(DataFrame(played_note_locations))
+
+# Get the first fret played on each string
+start_frets = []
+
+for i in range(0,len(played_note_locations)):
+  for j in range(0,len(played_note_locations)):
+    if played_note_locations[i][j] == 1:
+      start_frets.append(j)
+      break
+
+print(start_frets)
+
+# For each first fret played, find notes that are no more than 3 frets away
+for start_fret in start_frets:
+  print("-----------------------------")
+  for i in range(0,len(strings)):
+    gtr_string = strings[i]
+
+    string_num = fret_frequencies_to_string_number_mapping.get(str(i))
+    print("\nString number: " + string_num)
+
+    for j in range(0,len(freq_in_recording)):
+      freq = freq_in_recording[j]
+
+      nearest = find_nearest(gtr_string,freq)
+
+      if not (nearest - freq) > 5.00:
+        #print(freq)
+        fret_of_note = gtr_string.index(nearest)
+
+        if fret_of_note >= start_fret and fret_of_note <= start_fret + 3:
+          s = "freq: {} fret: {}: start_fret: {}".format(nearest,fret_of_note,start_fret)
+          print(s)
+
+
 """
