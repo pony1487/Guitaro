@@ -34,6 +34,7 @@ class PitchSpeller:
         for freq in self.frequencies:
             if frequency >= (freq - 4.0) and frequency <= (freq + 4.0):
                 note_index = freq_index
+                print(str(frequency) + " ", end="")
             freq_index += 1
 
         return self.notes[note_index]
@@ -77,3 +78,4 @@ class PitchSpeller:
             output_str = "frequency_a is {} and is the same as frequency_b {}".format(self.notes[frequency_a_index],
                                                                                       self.notes[frequency_b_index])
             print(output_str)
+

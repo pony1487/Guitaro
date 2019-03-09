@@ -80,7 +80,6 @@ class AudioAnalysis:
                 pitch_spelled_list.append(pitch_speller.spell(freq))
 
         pitch_list_minus_duplicates = [k for k, g in itertools.groupby(pitch_spelled_list)]
-
         return pitch_list_minus_duplicates
 
     def analyse_timing(self):
