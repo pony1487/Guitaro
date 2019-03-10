@@ -18,7 +18,7 @@ class AudioAnalysis:
         Taken from https://github.com/aubio/aubio/tree/master/python/demos and slightly modified
         This uses the pitch method in aubio. It reads the audio file and gives a list of frequencies and the proability
         that it is that note.
-        :returns A list of notes
+        :returns A list of notes and the frequecies of those notes
         """
         downsample = 1
         samplerate = 44100 // downsample
@@ -55,8 +55,8 @@ class AudioAnalysis:
             total_frames += read
             if read < hop_s: break
 
-        pitch_list_minus_duplicates = self.remove_consecutive_duplicates(pitches)
-        return pitch_list_minus_duplicates
+        pitch_list_minus_duplicates,freq_list_minus_duplicates = self.remove_consecutive_duplicates(pitches)
+        return pitch_list_minus_duplicates, freq_list_minus_duplicates
 
     def remove_consecutive_duplicates(self, freq_list):
         """
@@ -65,22 +65,44 @@ class AudioAnalysis:
         The Aubio library method that returns the frequencies that fill the freq_list is constantly checking the frequency
         until the audio is over. This leads to for example multiple A notes being put in the list for the duration of a
         single A note. For example, the notes played could be A B C D and the freq_list after being pitch spelt would be
-        something like A A A A A A A A A B B B B B B B B C C C C C C C D D D D D D D. Which is note wrong, but messy to
+        something like A A A A A A A A A B B B B B B B B C C C C C C C D D D D D D D. Which is not wrong, but messy to
         look at an gives the impression that the notes were played multiple times as opposed to once each.
 
+        The frequency_list is to be used for Notation. This also has the same issue of duplicates as well as being not
+        being an exact frequency in the possible guitar frequencies. For example, the list can have 110,109,111 for an A
+        note which is 110hz. The find_nearest function is used in PitchSpeller to find the what this numbers are closest
+        to and then duplicates are removed. For example:
+        Notes that have been pitch spelled:
+        ['A', 'C', 'D', 'E', 'G']
+
+        This is the list that of freqs that was used to generate the above list.
+        [111, 110, 133, 132, 131, 148, 147, 166, 165, 197, 196, 197, 196]
+
+        After finding the nearest value in the guitar frequency list would become
+
+        [110.0, 110.0, 130.81, 130.81, 130.81, 146.83, 146.83, 164.81, 164.81, 196.0, 196.0, 196.0, 196.0]
+
+        and then when de-duplicated
+
+        [110.0, 130.81, 146.83, 164.81, 196.0]
 
         :param freq_list:
-        :return:
+        :return: list containing the notes(pitches) and a list containing the frequencies
         """
         pitch_speller = PitchSpeller()
         pitch_spelled_list = []
+        freq_list_minus_zeros = []
 
+        # remove zeros that are added if the confidence from the above analyse_notes() < 0.99
         for freq in freq_list:
             if freq != 0:
                 pitch_spelled_list.append(pitch_speller.spell(freq))
+                freq_list_minus_zeros.append(freq)
 
         pitch_list_minus_duplicates = [k for k, g in itertools.groupby(pitch_spelled_list)]
-        return pitch_list_minus_duplicates
+
+        freq_list_minus_duplicates = pitch_speller.find_nearest_and_dedup_freq_list(freq_list_minus_zeros)
+        return pitch_list_minus_duplicates,freq_list_minus_duplicates
 
     def analyse_timing(self):
         """

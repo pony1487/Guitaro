@@ -3,6 +3,7 @@ from FileManager import FileManager
 from AudioAnalysis import AudioAnalysis
 from AudioComparison import AudioComparison
 from PracticeGenerator import PracticeGenerator
+from Notation import Notation
 from chordrecognition.ChordAnalyser import ChordAnalyser
 from chordrecognition.ChordComparison import ChordComparison
 from guitaroconfig import valid_directories, valid_topics, valid_plans
@@ -119,15 +120,24 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             # Analyse the lesson and the users attempt
             lesson_analysis = AudioAnalysis(lesson_file_path)
 
-            user_note_list = user_audio_analysis.analyse_notes()
+            user_note_list, user_freq_list = user_audio_analysis.analyse_notes()
             user_timing_list = user_audio_analysis.analyse_timing()
+            print(user_note_list)
+            print(user_freq_list)
 
-            lesson_note_list = lesson_analysis.analyse_notes()
+            lesson_note_list, lesson_freq_list = lesson_analysis.analyse_notes()
             lesson_timing_list = lesson_analysis.analyse_timing()
+            print(lesson_note_list)
+            print(lesson_freq_list)
 
             # Compare the lesson and the users attempt
             audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
-                                               user_timing_list,bpm)
+                                               user_timing_list, bpm)
+
+            # Generate the Notation Infromation
+            user_notation_creator = Notation(user_freq_list)
+            lesson_notation_creator = Notation(lesson_freq_list)
+
             return jsonify(audio_comparison.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"

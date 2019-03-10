@@ -1,3 +1,7 @@
+import itertools
+import numpy as np
+
+
 class PitchSpeller:
     """
     This code is based on Brayn Duggans code for a DT228/2 Object Orientated Programming Example
@@ -8,7 +12,6 @@ class PitchSpeller:
 
     def __init__(self):
         # E2 to E6: 4 octaves
-        # NOTE: Find a better way to do this
         self.frequencies = [82.41, 87.31, 92.50, 98.00, 103.83, 110.00, 116.54, 123.47, 130.81, 138.59, 146.83, 155.56,
                             164.81, 174.61, 185.00, 196.00, 207.65, 220.00, 233.08, 246.94, 261.63, 277.18, 293.66,
                             311.13,
@@ -34,13 +37,13 @@ class PitchSpeller:
         for freq in self.frequencies:
             if frequency >= (freq - 4.0) and frequency <= (freq + 4.0):
                 note_index = freq_index
-                print(str(frequency) + " ", end="")
             freq_index += 1
 
         return self.notes[note_index]
 
     def get_num_of_notes_between_notes(self, frequency_a, frequency_b):
         """
+        NOT USED
         This method takes to frequencies and determines how many frets/steps are between them if there is any.
         :param frequency_a:
         :param frequency_b:
@@ -79,3 +82,25 @@ class PitchSpeller:
                                                                                       self.notes[frequency_b_index])
             print(output_str)
 
+    def find_nearest_and_dedup_freq_list(self, freq_list):
+        nearest_freqs = list()
+
+        for freq in freq_list:
+            nearest = find_nearest(self.frequencies, freq)
+            nearest_freqs.append(nearest)
+
+        nearest_freqs_minus_duplicates = [k for k, g in itertools.groupby(nearest_freqs)]
+
+        return nearest_freqs_minus_duplicates
+
+
+def find_nearest(array, value):
+    """
+    Finds the nearest value closest to the value argument in a array
+    :param array:
+    :param value:
+    :return:
+    """
+    array = np.asarray(array)
+    index = (np.abs(array - value)).argmin()
+    return array[index]
