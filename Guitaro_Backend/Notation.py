@@ -1,4 +1,5 @@
 import numpy as np
+from fret_mappings import fret_mappings, strings
 
 
 class Notation:
@@ -7,7 +8,7 @@ class Notation:
         """
         On guitar the same note can be played in two or even three different places. This raises the issue of
         how to determine what frets and what strings were played.
-        
+
         This class gets the fret of the first note played on each string. It uses this fret as a start point to
         determine which notes where played where by limiting notes surrounding it to be not greater than 3 frets
         away. This has the effect of creating "boxes" around where notes where played on the fret board.
@@ -16,13 +17,8 @@ class Notation:
 
         :param freqs_in_recording: An array of note frequencies
         """
-        self.strings = [
-            [82.41, 87.31, 92.50, 98.00, 103.83, 110.00, 116.54, 123.47, 130.81, 138.59, 146.83, 155.56, 164.81],
-            [110.00, 116.54, 123.47, 130.81, 138.59, 146.83, 155.56, 164.81, 174.61, 185.00, 196.00, 207.65, 220.00],
-            [146.83, 155.56, 164.81, 174.61, 185.00, 196.00, 207.65, 220.00, 233.08, 246.94, 261.63, 277.18, 293.66],
-            [196.00, 207.65, 220.00, 233.08, 246.94, 261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00],
-            [246.94, 261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88],
-            [329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25, 554.37, 587.33, 622.25, 659.25]]
+        self.fret_mappings = fret_mappings
+        self.strings = strings
 
         self.fret_frequencies_to_string_number_mapping = {
             "0": "6",
@@ -40,11 +36,14 @@ class Notation:
         # (13 across to account for the open string)
         self.played_note_locations = [[0 for i in range(13)] for j in range(6)]
 
+        self.strings_to_be_played_list = list()
+
         self.__find_played_note_locations()
         self.__get_start_fret_of_each_string()
         self.__find_frets_and_string_of_notes()
 
     def __find_played_note_locations(self):
+
         # Fill 2d array with locations of notes played
         for i in range(0, len(self.strings)):
             gtr_string = self.strings[i]
@@ -52,10 +51,7 @@ class Notation:
             for j in range(0, len(self.freqs_in_recording)):
 
                 freq = self.freqs_in_recording[j]
-
-                freq = find_nearest(gtr_string, freq)
                 # print(freq)
-
                 if freq in gtr_string:
                     fret = gtr_string.index(freq)
                     s = "freq: {} fret: {}".format(freq, fret)
@@ -71,36 +67,22 @@ class Notation:
                     break
 
     def __find_frets_and_string_of_notes(self):
-        # For each first fret played, find notes that are no more than 3 frets away
-        for start_fret in self.start_frets:
-            print("-----------------------------")
-            for i in range(0, len(self.strings)):
-                gtr_string = self.strings[i]
 
-                string_num = self.fret_frequencies_to_string_number_mapping.get(str(i))
-                print("\nString number: " + string_num)
+        # Limit it to just the first "box"
+        start_fret = self.start_frets[0]
+        for freq in self.freqs_in_recording:
 
-                for j in range(0, len(self.freqs_in_recording)):
-                    freq = self.freqs_in_recording[j]
+            for string, value in fret_mappings.items():
+                string_dict = fret_mappings.get(string)
+                if string_dict.get(freq):
+                    fret_of_freq = string_dict.get(freq)
+                    if start_fret <= fret_of_freq <= start_fret + 3:
+                        s = "{} {}".format(string, fret_of_freq)
+                        self.strings_to_be_played_list.append(string)
+                        # print(s)
 
-                    nearest = find_nearest(gtr_string, freq)
+        print(self.freqs_in_recording)
+        print(self.strings_to_be_played_list)
 
-                    if not (nearest - freq) > 5.00:
-                        # print(freq)
-                        fret_of_note = gtr_string.index(nearest)
-
-                        if fret_of_note >= start_fret and fret_of_note <= start_fret + 3:
-                            s = "freq: {} fret: {}: start_fret: {}".format(nearest, fret_of_note, start_fret)
-                            print(s)
-
-
-def find_nearest(array, value):
-    """
-    Finds the nearest value closest to the value argument in a array
-    :param array:
-    :param value:
-    :return:
-    """
-    array = np.asarray(array)
-    index = (np.abs(array - value)).argmin()
-    return array[index]
+    def __get_strings_to_be_played(self):
+        return self.strings_to_be_played_list
