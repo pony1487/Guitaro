@@ -15,6 +15,9 @@ class Notation:
         This limits the amount of possible combinations of notes played to a be more like how they are actually
         played on a real fretboard.
 
+        Currently, it is limited to the first note it encounters to set the "box". To show alternative ways to play
+        the same thing, loop through each number in start frets
+
         :param freqs_in_recording: An array of note frequencies
         """
         self.fret_mappings = fret_mappings
@@ -37,10 +40,11 @@ class Notation:
         self.played_note_locations = [[0 for i in range(13)] for j in range(6)]
 
         self.strings_to_be_played_list = list()
+        self.frets_to_be_played_list = list()
 
         self.__find_played_note_locations()
         self.__get_start_fret_of_each_string()
-        self.__find_frets_and_string_of_notes()
+        self.__find_frets_and_strings_of_notes()
 
     def __find_played_note_locations(self):
 
@@ -66,7 +70,7 @@ class Notation:
                     self.start_frets.append(j)
                     break
 
-    def __find_frets_and_string_of_notes(self):
+    def __find_frets_and_strings_of_notes(self):
 
         # Catch if there is just silence submitted
         if self.start_frets:
@@ -79,12 +83,14 @@ class Notation:
                     if string_dict.get(freq):
                         fret_of_freq = string_dict.get(freq)
                         if start_fret <= fret_of_freq <= start_fret + 3:
-                            s = "{} {}".format(string, fret_of_freq)
                             self.strings_to_be_played_list.append(string)
-                            # print(s)
+                            self.frets_to_be_played_list.append(fret_of_freq)
 
         else:
-            print("Notation.py: start_frets is empty!")
+            print("Notation.py: start_frets is empty! Silence being submitted is probable cause")
 
     def get_strings_to_be_played(self):
         return self.strings_to_be_played_list
+
+    def get_frets_to_be_played(self):
+        return self.frets_to_be_played_list

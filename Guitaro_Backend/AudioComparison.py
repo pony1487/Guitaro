@@ -4,7 +4,7 @@ import numpy as np
 class AudioComparison:
 
     def __init__(self, lesson_name, lesson_note_list, lesson_timing_list, user_note_list, user_timing_list, bpm,
-                 lesson_string_list, user_string_list):
+                 lesson_string_list, user_string_list,lesson_fret_list,user_fret_list):
         self.lesson_name = lesson_name
         self.lesson_note_list = lesson_note_list
         self.lesson_timing_list = lesson_timing_list
@@ -15,6 +15,9 @@ class AudioComparison:
 
         self.lesson_string_list = lesson_string_list
         self.user_string_list = user_string_list
+
+        self.lesson_fret_list = lesson_fret_list
+        self.user_fret_list = user_fret_list
 
         self.comparison_dict = dict()
         self.__init_comparison_json(self.lesson_name)
@@ -28,12 +31,15 @@ class AudioComparison:
         self.comparison_dict["lesson_timing_list"] = self.lesson_timing_list
         self.comparison_dict["lesson_string_list"] =  self.lesson_string_list
         self.comparison_dict["user_string_list"] =  self.user_string_list
+
+        self.comparison_dict["lesson_fret_list"] = self.lesson_fret_list
+        self.comparison_dict["user_fret_list"] = self.user_fret_list
+
         self.comparison_dict["wrong_note_indexes"] = []
         self.comparison_dict["notes_not_in_lesson"] = []
         self.comparison_dict["feedback"] = []
         self.comparison_dict["percentage_difference"] = []
-        self.comparison_dict["lesson_note_durations"] = self.__get_note_durations_of_timing_list(
-            self.lesson_timing_list)
+        self.comparison_dict["lesson_note_durations"] = self.__get_note_durations_of_timing_list(self.lesson_timing_list)
         self.comparison_dict["user_note_durations"] = self.__get_note_durations_of_timing_list(self.user_timing_list)
 
         """
@@ -127,11 +133,10 @@ class AudioComparison:
         :return:
         """
         duration_name = ["whole", "half", "quarter", "eight", "sixteen"]
-        print(self.bpm)
 
         note_durations = self.__get_note_duration_given_tempo(self.bpm)
 
-        return_list = []
+        return_list = list()
 
         for i in range(0, len(arr) - 1):
             diff = arr[i + 1] - arr[i]
@@ -139,6 +144,7 @@ class AudioComparison:
             duration = float(duration)
             duration_index = note_durations.index(duration)
             return_list.append(duration_name[duration_index])
+
         return return_list
 
     def __get_note_duration_given_tempo(self, bpm):
@@ -157,7 +163,7 @@ class AudioComparison:
         eight_note = 0.5 * (60 / bpm)  # 0.25
         sixteenth_note = 0.25 * (60 / bpm)
 
-        duration_list = []
+        duration_list = list()
         duration_list.append(whole_note)
         duration_list.append(half_note)
         duration_list.append(quarter_note)

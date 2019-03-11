@@ -133,9 +133,13 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             user_string_list = user_notation_creator.get_strings_to_be_played()
             lesson_string_list = lesson_notation_creator.get_strings_to_be_played()
 
+            user_fret_list = user_notation_creator.get_frets_to_be_played()
+            lesson_fret_list = lesson_notation_creator.get_frets_to_be_played()
+
             # Compare the lesson and the users attempt
             audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
-                                               user_timing_list, bpm, lesson_string_list, user_string_list)
+                                               user_timing_list, bpm, lesson_string_list, user_string_list,
+                                               lesson_fret_list,user_fret_list)
 
             return jsonify(audio_comparison.get_comparision_dict())
         else:
