@@ -3,7 +3,8 @@ import numpy as np
 
 class AudioComparison:
 
-    def __init__(self, lesson_name, lesson_note_list, lesson_timing_list, user_note_list, user_timing_list, bpm):
+    def __init__(self, lesson_name, lesson_note_list, lesson_timing_list, user_note_list, user_timing_list, bpm,
+                 lesson_string_list, user_string_list):
         self.lesson_name = lesson_name
         self.lesson_note_list = lesson_note_list
         self.lesson_timing_list = lesson_timing_list
@@ -11,6 +12,9 @@ class AudioComparison:
         self.user_note_list = user_note_list
         self.user_timing_list = user_timing_list
         self.bpm = int(bpm)
+
+        self.lesson_string_list = lesson_string_list
+        self.user_string_list = user_string_list
 
         self.comparison_dict = dict()
         self.__init_comparison_json(self.lesson_name)
@@ -22,6 +26,8 @@ class AudioComparison:
         self.comparison_dict["user_timing_list"] = self.user_timing_list
         self.comparison_dict["lesson_note_list"] = self.lesson_note_list
         self.comparison_dict["lesson_timing_list"] = self.lesson_timing_list
+        self.comparison_dict["lesson_string_list"] =  self.lesson_string_list
+        self.comparison_dict["user_string_list"] =  self.user_string_list
         self.comparison_dict["wrong_note_indexes"] = []
         self.comparison_dict["notes_not_in_lesson"] = []
         self.comparison_dict["feedback"] = []
@@ -71,7 +77,7 @@ class AudioComparison:
             notes_not_in_lesson = list(set(self.user_note_list) - set(self.lesson_note_list))
             self.comparison_dict["notes_not_in_lesson"] = notes_not_in_lesson
         else:
-            print("user_note_list is empty. len of submited user list: " + str(len(self.user_note_list)))
+            print("AudioComparision.py: user_note_list is empty. len of submited user list: " + str(len(self.user_note_list)))
 
     def __compare_timing_lists(self):
         """

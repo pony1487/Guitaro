@@ -68,21 +68,23 @@ class Notation:
 
     def __find_frets_and_string_of_notes(self):
 
-        # Limit it to just the first "box"
-        start_fret = self.start_frets[0]
-        for freq in self.freqs_in_recording:
+        # Catch if there is just silence submitted
+        if self.start_frets:
+            # Limit it to just the first "box"
+            start_fret = self.start_frets[0]
+            for freq in self.freqs_in_recording:
 
-            for string, value in fret_mappings.items():
-                string_dict = fret_mappings.get(string)
-                if string_dict.get(freq):
-                    fret_of_freq = string_dict.get(freq)
-                    if start_fret <= fret_of_freq <= start_fret + 3:
-                        s = "{} {}".format(string, fret_of_freq)
-                        self.strings_to_be_played_list.append(string)
-                        # print(s)
+                for string, value in fret_mappings.items():
+                    string_dict = fret_mappings.get(string)
+                    if string_dict.get(freq):
+                        fret_of_freq = string_dict.get(freq)
+                        if start_fret <= fret_of_freq <= start_fret + 3:
+                            s = "{} {}".format(string, fret_of_freq)
+                            self.strings_to_be_played_list.append(string)
+                            # print(s)
 
-        print(self.freqs_in_recording)
-        print(self.strings_to_be_played_list)
+        else:
+            print("Notation.py: start_frets is empty!")
 
-    def __get_strings_to_be_played(self):
+    def get_strings_to_be_played(self):
         return self.strings_to_be_played_list

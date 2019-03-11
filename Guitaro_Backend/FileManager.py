@@ -46,8 +46,13 @@ class FileManager:
         return str(self.sub_dir)
 
     def get_tempo_from_file_name(self, lesson_name):
-        # Remove the .wav
-        lesson_name_without_ext = lesson_name[:-4]
-        # The bpm is always after the dash -
-        bpm = lesson_name_without_ext.split('-')[1]
-        return bpm
+        if "-" in lesson_name:
+            # Remove the .wav
+            lesson_name_without_ext = lesson_name[:-4]
+            # The bpm is always after the dash -
+            bpm = lesson_name_without_ext.split('-')[1]
+            return bpm
+        else:
+            error_str = "Error: Not valid filename. Filename should be <name-tempo.wav> format. Recieved: \'{}\'".format(
+                lesson_name)
+            print(error_str)
