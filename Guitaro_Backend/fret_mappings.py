@@ -102,3 +102,13 @@ strings = [
     [246.94, 261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88],
     [329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25, 554.37, 587.33, 622.25, 659.25]
 ]
+
+# The actual number of beats in each duration, not there length in seconds
+number_of_beats_dictionary = {
+    "whole": 4,
+    "half": 2,
+    "quarter": 1,
+    "eight": 0.5,
+    "sixteenth": 0.25,
+    "thirty_second": 0.125
+}

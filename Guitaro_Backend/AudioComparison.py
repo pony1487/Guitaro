@@ -1,10 +1,7 @@
-import numpy as np
-
-
 class AudioComparison:
 
     def __init__(self, lesson_name, lesson_note_list, lesson_timing_list, user_note_list, user_timing_list, bpm,
-                 lesson_string_list, user_string_list, lesson_fret_list, user_fret_list):
+                 user_string_list, user_fret_list, user_duration_list,total_beats):
         self.lesson_name = lesson_name
         self.lesson_note_list = lesson_note_list
         self.lesson_timing_list = lesson_timing_list
@@ -13,23 +10,11 @@ class AudioComparison:
         self.user_timing_list = user_timing_list
         self.bpm = int(bpm)
 
-        self.lesson_string_list = lesson_string_list
         self.user_string_list = user_string_list
-
-        self.lesson_fret_list = lesson_fret_list
         self.user_fret_list = user_fret_list
+        self.user_duration_list = user_duration_list
 
-        # The actual number of beats in each duration, not there length in seconds
-        self.number_of_beats = {
-            "whole": 4,
-            "half": 2,
-            "quarter": 1,
-            "eight": 0.5,
-            "sixteenth": 0.25,
-            "thirty_second": 0.125
-        }
-
-        self.total_beats = 0
+        self.total_beats = total_beats
 
         self.comparison_dict = dict()
         self.__init_comparison_json(self.lesson_name)
@@ -41,27 +26,17 @@ class AudioComparison:
         self.comparison_dict["user_timing_list"] = self.user_timing_list
         self.comparison_dict["lesson_note_list"] = self.lesson_note_list
         self.comparison_dict["lesson_timing_list"] = self.lesson_timing_list
-        self.comparison_dict["lesson_string_list"] = self.lesson_string_list
-        self.comparison_dict["user_string_list"] = self.user_string_list
-
-        self.comparison_dict["lesson_fret_list"] = self.lesson_fret_list
-        self.comparison_dict["user_fret_list"] = self.user_fret_list
 
         self.comparison_dict["wrong_note_indexes"] = []
         self.comparison_dict["notes_not_in_lesson"] = []
         self.comparison_dict["feedback"] = []
         self.comparison_dict["percentage_difference"] = []
 
-        lesson_duration_list = self.__get_note_durations_of_timing_list(self.lesson_timing_list)
-        user_duration_list = self.__get_note_durations_of_timing_list(self.user_timing_list)
+        self.comparison_dict["user_string_list"] = self.user_string_list
+        self.comparison_dict["user_fret_list"] = self.user_fret_list
+        self.comparison_dict["user_duration_list"] = self.user_duration_list
 
-        lesson_duration_padded = self.__pad_note_durations(lesson_duration_list)
-        user_duration_padded = self.__pad_note_durations(user_duration_list)
-
-        self.comparison_dict["lesson_note_durations"] = lesson_duration_padded
-        self.comparison_dict["user_note_durations"] = user_duration_padded
-        self.comparison_dict["lesson_total_beats"] = self.calculate_total_beats(lesson_duration_padded)
-        self.comparison_dict["user_total_beats"] = self.calculate_total_beats(user_duration_padded)
+        self.comparison_dict["total_beats"] = self.total_beats
 
         self.__compare_note_lists()
         self.__compare_timing_lists()
@@ -138,109 +113,6 @@ class AudioComparison:
                 difference = lesson_note_time - user_note_time
                 percent = difference / lesson_note_time * 100
                 return percent * -1
-
-    def __get_note_durations_of_timing_list(self, arr):
-        """
-        Gets the difference in time between each consecutive note in a note timing list and will find determine the
-        duration name ie half, whole, quater etc
-
-        NOTE: The duration is gotten by substracting the next note from the current note. This wont work for the last
-        note as there is no note following the current note. I set every last note to be the same as the
-        second last note as it doesnt really matter how long it lasts and this makes it easier to notate it.
-        :param arr:
-        :param bpm:
-        :return:
-        """
-        duration_name = ["whole", "half", "quarter", "eight", "sixteenth", "thirty_second"]
-
-        note_durations = self.__get_note_duration_given_tempo(self.bpm)
-
-        return_list = list()
-
-        for i in range(0, len(arr) - 1):
-            diff = arr[i + 1] - arr[i]
-            duration, index = self.__find_nearest(note_durations, diff)
-            duration = float(duration)
-            duration_index = note_durations.index(duration)
-            return_list.append(duration_name[duration_index])
-
-        # we assume that the last note played is always the same duration as the one that came before it.
-        # The last note generally is just let ring out. It doesnt really matter how long it rings out for.
-        # For the notation to work, there needs to be a duration for the last note. I set every last note played
-        # to be same as the second last
-        if return_list:
-            second_last_note_duration = return_list[-1]
-            return_list.append(second_last_note_duration)
-
-        return return_list
-
-    def __get_note_duration_given_tempo(self, bpm):
-        """
-        Assume that their are only 6 possible values. More can be added for faster notes. ie 32nd note
-        So to get the note name index is:
-        0 = whole
-        1 = half
-        2 = quarter
-        3 = eight
-        4 = sixteen
-        5 = 32nd note
-        """
-        whole_note = 4 * (60 / bpm)
-        half_note = 2 * (60 / bpm)
-        quarter_note = 60 / bpm  # 0.5
-        eight_note = 0.5 * (60 / bpm)  # 0.25
-        sixteenth_note = 0.25 * (60 / bpm)
-        thirty_second_note = 0.125 * (60 / bpm)
-
-        duration_list = list()
-        duration_list.append(whole_note)
-        duration_list.append(half_note)
-        duration_list.append(quarter_note)
-        duration_list.append(eight_note)
-        duration_list.append(sixteenth_note)
-        duration_list.append(thirty_second_note)
-
-        return duration_list
-
-    def __find_nearest(self, array, value):
-        """
-        Stackoverflow used for this. https://stackoverflow.com/questions/2566412/find-nearest-value-in-numpy-array
-        :param array: contain the durations of the whole,half,quarter etc notes based on tempo give
-        :param value: The difference between two consecutive notes. ie Note B - A gives A's length which is then check
-        against the note durations calculated from the tempo
-        :return:
-        """
-        array = np.asarray(array)
-        index = (np.abs(array - value)).argmin()
-        return array[index], index
-
-    def __pad_note_durations(self, arr):
-
-        total_beats = self.calculate_total_beats(arr)
-        print("total_beats: " + str(total_beats))
-        # If there is not the correct amount of notes to fill a bar pad it whatever durations add up to make a full bar
-        if total_beats % 4 != 0:
-            next_multiple_of_four = total_beats + (4 - total_beats % 4)
-            print("next_multiple_of_four: " + str(next_multiple_of_four))
-
-            diff = next_multiple_of_four - total_beats
-            print("diff: " + str(diff))
-            for key, val in self.number_of_beats.items():
-                if val <= diff:
-                    diff = diff % val
-
-                    arr.append(key)
-            print("arr padded: "+ str(arr))
-            return arr
-        else:
-            print("arr not padded: "+ str(arr))
-            return arr
-
-    def calculate_total_beats(self, arr):
-        total_beats = 0
-        for i in arr:
-            total_beats += self.number_of_beats.get(i)
-        return total_beats
 
     def get_comparision_dict(self):
         return self.comparison_dict

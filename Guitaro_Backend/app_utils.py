@@ -9,3 +9,11 @@ def allowed_file(filename):
     """
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def create_dictionary(**kwargs):
+    d = dict()
+    for key, value in kwargs.items():
+        d[key] = value
+
+    return d

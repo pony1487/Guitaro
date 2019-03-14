@@ -76,23 +76,14 @@ def get_lesson_notation(topic, lesson):
     lesson_note_list, lesson_freq_list = lesson_analysis.analyse_notes()
     lesson_timing_list = lesson_analysis.analyse_timing()
 
-    lesson_notation_creator = Notation(lesson_freq_list)
+    lesson_notation_creator = Notation(lesson_freq_list, lesson_timing_list, bpm)
 
     lesson_string_list = lesson_notation_creator.get_strings_to_be_played()
     lesson_fret_list = lesson_notation_creator.get_frets_to_be_played()
-
-    """
-    lesson_name, lesson_note_list, lesson_timing_list, user_note_list, user_timing_list, bpm,
-                 lesson_string_list, user_string_list, lesson_fret_list, user_fret_list
-    """
-    # Refactor this class. This is a mess!
-    audio_comparison = AudioComparison(lesson_name=lesson, lesson_note_list=lesson_note_list,
-                                       lesson_timing_list=lesson_timing_list, user_note_list=None,
-                                       user_timing_list=None, bpm=bpm, lesson_string_list=lesson_string_list,
-                                       user_string_list=None,
-                                       lesson_fret_list=lesson_fret_list, user_fret_list=None)
-
-    return jsonify(audio_comparison.get_comparision_dict())
+    padded_duration_list = lesson_notation_creator.get_padded_duration_list()
+    d = app_utils.create_dictionary(lesson_string_list=lesson_string_list, lesson_fret_list=lesson_fret_list,
+                                    padded_duration_list=padded_duration_list)
+    return jsonify(d)
 
 
 @app.route('/plans/<plan>')
@@ -162,19 +153,17 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             lesson_timing_list = lesson_analysis.analyse_timing()
 
             # Generate the Notation Infromation
-            user_notation_creator = Notation(user_freq_list)
-            lesson_notation_creator = Notation(lesson_freq_list)
+            user_notation_creator = Notation(user_freq_list, user_timing_list, bpm)
 
             user_string_list = user_notation_creator.get_strings_to_be_played()
-            lesson_string_list = lesson_notation_creator.get_strings_to_be_played()
-
             user_fret_list = user_notation_creator.get_frets_to_be_played()
-            lesson_fret_list = lesson_notation_creator.get_frets_to_be_played()
+            user_duration_list = user_notation_creator.get_padded_duration_list()
+            total_beats = user_notation_creator.calculate_total_beats(user_duration_list)
 
             # Compare the lesson and the users attempt
             audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
-                                               user_timing_list, bpm, lesson_string_list, user_string_list,
-                                               lesson_fret_list, user_fret_list)
+                                               user_timing_list, bpm, user_string_list, user_fret_list,
+                                               user_duration_list,total_beats)
 
             return jsonify(audio_comparison.get_comparision_dict())
         else:
