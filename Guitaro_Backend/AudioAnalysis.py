@@ -161,6 +161,7 @@ class AudioAnalysis:
                 total_frames += read
                 if read < hop_s: break
 
+            #print(onset_time_list)
             return onset_time_list
         except IOError as e:
             error_str = "Could not open file:{}. Error: {}".format(self.filepath, e)

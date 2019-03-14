@@ -60,6 +60,41 @@ def get_lesson_from_topic(topic, lesson):
         return str(e)
 
 
+@app.route('/notation/topics/<topic>/<lesson>', methods=['GET'])
+def get_lesson_notation(topic, lesson):
+    print("Test notation")
+    topic_path = "topics/"
+    topic += "/"
+    file_manager = FileManager(topic_path + topic)
+
+    bpm = file_manager.get_tempo_from_file_name(lesson)
+
+    lesson_file_path = file_manager.get_lesson_path("/" + lesson)
+
+    lesson_analysis = AudioAnalysis(lesson_file_path)
+
+    lesson_note_list, lesson_freq_list = lesson_analysis.analyse_notes()
+    lesson_timing_list = lesson_analysis.analyse_timing()
+
+    lesson_notation_creator = Notation(lesson_freq_list)
+
+    lesson_string_list = lesson_notation_creator.get_strings_to_be_played()
+    lesson_fret_list = lesson_notation_creator.get_frets_to_be_played()
+
+    """
+    lesson_name, lesson_note_list, lesson_timing_list, user_note_list, user_timing_list, bpm,
+                 lesson_string_list, user_string_list, lesson_fret_list, user_fret_list
+    """
+    # Refactor this class. This is a mess!
+    audio_comparison = AudioComparison(lesson_name=lesson, lesson_note_list=lesson_note_list,
+                                       lesson_timing_list=lesson_timing_list, user_note_list=None,
+                                       user_timing_list=None, bpm=bpm, lesson_string_list=lesson_string_list,
+                                       user_string_list=None,
+                                       lesson_fret_list=lesson_fret_list, user_fret_list=None)
+
+    return jsonify(audio_comparison.get_comparision_dict())
+
+
 @app.route('/plans/<plan>')
 def list_files_in_plan(plan):
     plan_path = "plans/"
@@ -139,7 +174,7 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             # Compare the lesson and the users attempt
             audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
                                                user_timing_list, bpm, lesson_string_list, user_string_list,
-                                               lesson_fret_list,user_fret_list)
+                                               lesson_fret_list, user_fret_list)
 
             return jsonify(audio_comparison.get_comparision_dict())
         else:
