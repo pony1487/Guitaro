@@ -1,6 +1,5 @@
 import numpy as np
 from fret_mappings import fret_mappings, strings, number_of_beats_dictionary
-from app_utils import create_dictionary
 
 
 class Notation:
@@ -74,8 +73,10 @@ class Notation:
     def __get_start_fret_of_each_string(self):
         # Get the first fret played on each string
         for i in range(0, len(self.played_note_locations)):
-            for j in range(0, len(self.played_note_locations)):
-                if self.played_note_locations[i][j] == 1:
+            string = self.played_note_locations[i]
+
+            for j in range(0, len(string)):
+                if string[j] == 1:
                     self.start_frets.append(j)
                     break
 
@@ -91,7 +92,8 @@ class Notation:
                     string_dict = fret_mappings.get(string)
                     if string_dict.get(freq):
                         fret_of_freq = string_dict.get(freq)
-                        if start_fret <= fret_of_freq <= start_fret + 3:
+                        # Between one fret below and 3 frets above
+                        if start_fret - 1 <= fret_of_freq <= start_fret + 3:
                             self.strings_to_be_played_list.append(string)
                             self.frets_to_be_played_list.append(fret_of_freq)
 
@@ -110,7 +112,8 @@ class Notation:
         :param bpm:
         :return:
         """
-        duration_name = ["whole", "half", "quarter", "eight", "sixteenth", "thirty_second"]
+        # duration_name = ["whole", "half", "quarter", "eight", "sixteenth", "thirty_second"]
+        duration_name = ["whole", "half", "quarter", "eight", "sixteenth"]
 
         note_durations = self.__get_note_duration_given_tempo(self.bpm)
 
@@ -149,7 +152,7 @@ class Notation:
         quarter_note = 60 / bpm  # 0.5
         eight_note = 0.5 * (60 / bpm)  # 0.25
         sixteenth_note = 0.25 * (60 / bpm)
-        thirty_second_note = 0.125 * (60 / bpm)
+        # thirty_second_note = 0.125 * (60 / bpm)
 
         duration_list = list()
         duration_list.append(whole_note)
@@ -157,7 +160,7 @@ class Notation:
         duration_list.append(quarter_note)
         duration_list.append(eight_note)
         duration_list.append(sixteenth_note)
-        duration_list.append(thirty_second_note)
+        # duration_list.append(thirty_second_note)
 
         return duration_list
 

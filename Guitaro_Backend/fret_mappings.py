@@ -110,5 +110,5 @@ number_of_beats_dictionary = {
     "quarter": 1,
     "eight": 0.5,
     "sixteenth": 0.25,
-    "thirty_second": 0.125
+    #"thirty_second": 0.125
 }

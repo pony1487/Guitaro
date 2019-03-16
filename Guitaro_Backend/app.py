@@ -81,8 +81,11 @@ def get_lesson_notation(topic, lesson):
     lesson_string_list = lesson_notation_creator.get_strings_to_be_played()
     lesson_fret_list = lesson_notation_creator.get_frets_to_be_played()
     padded_duration_list = lesson_notation_creator.get_padded_duration_list()
+
+    total_beats = lesson_notation_creator.calculate_total_beats(padded_duration_list)
+
     d = app_utils.create_dictionary(lesson_string_list=lesson_string_list, lesson_fret_list=lesson_fret_list,
-                                    padded_duration_list=padded_duration_list)
+                                    padded_duration_list=padded_duration_list,total_beats=total_beats,bpm=bpm)
     return jsonify(d)
 
 
@@ -149,9 +152,12 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             user_note_list, user_freq_list = user_audio_analysis.analyse_notes()
             user_timing_list = user_audio_analysis.analyse_timing()
 
+
+
             lesson_note_list, lesson_freq_list = lesson_analysis.analyse_notes()
             lesson_timing_list = lesson_analysis.analyse_timing()
 
+            print(lesson_freq_list)
             # Generate the Notation Infromation
             user_notation_creator = Notation(user_freq_list, user_timing_list, bpm)
 
