@@ -86,13 +86,15 @@ class Notation:
         if self.start_frets:
             # Limit it to just the first "box"
             start_fret = self.start_frets[0]
+            print("Start_fret[0]: {}\n".format(start_fret))
             for freq in self.freqs_in_recording:
 
                 for string, value in fret_mappings.items():
                     string_dict = fret_mappings.get(string)
-                    if string_dict.get(freq):
+
+                    if string_dict.get(freq) is not None:
+
                         fret_of_freq = string_dict.get(freq)
-                        # Between one fret below and 3 frets above
                         if start_fret - 1 <= fret_of_freq <= start_fret + 3:
                             self.strings_to_be_played_list.append(string)
                             self.frets_to_be_played_list.append(fret_of_freq)
