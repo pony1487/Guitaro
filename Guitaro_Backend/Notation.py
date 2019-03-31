@@ -1,6 +1,7 @@
 import numpy as np
 from fret_mappings import fret_mappings, strings, number_of_beats_dictionary
 
+from pandas import DataFrame
 
 class Notation:
 
@@ -69,6 +70,8 @@ class Notation:
                     s = "freq: {} fret: {}".format(freq, fret)
                     # print("i: " + str(i) + " j: " + str(j))
                     self.played_note_locations[i][fret] = 1
+
+        #print(DataFrame(self.played_note_locations))
 
     def __get_start_fret_of_each_string(self):
         # Get the first fret played on each string

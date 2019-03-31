@@ -60,6 +60,7 @@ def get_lesson_from_topic(topic, lesson):
         return str(e)
 
 
+# Notate regurlar lessons
 @app.route('/notation/topics/<topic>/<lesson>', methods=['GET'])
 def get_lesson_notation(topic, lesson):
     print("Test notation")
@@ -85,8 +86,26 @@ def get_lesson_notation(topic, lesson):
     total_beats = lesson_notation_creator.calculate_total_beats(padded_duration_list)
 
     d = app_utils.create_dictionary(lesson_string_list=lesson_string_list, lesson_fret_list=lesson_fret_list,
-                                    padded_duration_list=padded_duration_list,total_beats=total_beats,bpm=bpm)
+                                    padded_duration_list=padded_duration_list, total_beats=total_beats, bpm=bpm)
     return jsonify(d)
+
+
+# Notate chord lesson
+@app.route('/chord-notation/plans/<plan>/<lesson>', methods=['GET'])
+def get_chord_notation(plan, lesson):
+    plan_path = "plans/"
+    plan += "/"
+    file_manager = FileManager(plan_path + plan)
+
+    #DEBUG
+    d = {
+        "lesson_fret_list":[],
+        "lesson_string_list":[],
+        "duration_list": [],
+        "total_beats": 4
+    }
+    return jsonify(d)
+
 
 
 @app.route('/plans/<plan>')
@@ -152,12 +171,13 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             user_note_list, user_freq_list = user_audio_analysis.analyse_notes()
             user_timing_list = user_audio_analysis.analyse_timing()
 
-
-
             lesson_note_list, lesson_freq_list = lesson_analysis.analyse_notes()
             lesson_timing_list = lesson_analysis.analyse_timing()
 
-            print(lesson_freq_list)
+            print("Lessons_freq_list" + str(lesson_freq_list))
+
+            print("user_freq_list" + str(user_freq_list))
+
             # Generate the Notation Infromation
             user_notation_creator = Notation(user_freq_list, user_timing_list, bpm)
 
@@ -169,7 +189,7 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             # Compare the lesson and the users attempt
             audio_comparison = AudioComparison(lesson, lesson_note_list, lesson_timing_list, user_note_list,
                                                user_timing_list, bpm, user_string_list, user_fret_list,
-                                               user_duration_list,total_beats)
+                                               user_duration_list, total_beats)
 
             return jsonify(audio_comparison.get_comparision_dict())
         else:

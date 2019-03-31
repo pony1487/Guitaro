@@ -31,15 +31,22 @@ class PitchSpeller:
         :param frequency:
         :return: the note of corresponding the frequency
         """
-        freq_index = 0
-        note_index = 0
 
-        for freq in self.frequencies:
-            if frequency >= (freq - 4.0) and frequency <= (freq + 4.0):
-                note_index = freq_index
-            freq_index += 1
+        min_freq = 82.41
+        max_freq = 1318.51
 
-        return self.notes[note_index]
+        if isinstance(frequency, float) and min_freq <= frequency <= max_freq:
+            freq_index = 0
+            note_index = 0
+
+            for freq in self.frequencies:
+                if frequency >= (freq - 4.0) and frequency <= (freq + 4.0):
+                    note_index = freq_index
+                freq_index += 1
+
+            return self.notes[note_index]
+        else:
+            raise Exception("Bad Frequency Input")
 
     def get_num_of_notes_between_notes(self, frequency_a, frequency_b):
         """
