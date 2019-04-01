@@ -1,6 +1,5 @@
 from os import listdir, path
 from os.path import isfile, join
-import json
 
 
 class FileManager:
@@ -11,7 +10,6 @@ class FileManager:
 
     def list_directories(self):
         """
-
         :return: dict containing directory names. This is jsonified to be sent back to client
         """
         directory_dict = dict()

@@ -27,6 +27,7 @@ class AudioAnalysis:
         win_s = 4096 // downsample  # fft size
         hop_s = 512 // downsample  # hop size
 
+
         # TAKES A STR ARG FOR THE FILE PATH, NOT THE FILE ITSELF
         try:
             s = aubio.source(self.filepath, samplerate, hop_s)
@@ -58,9 +59,11 @@ class AudioAnalysis:
                 if read < hop_s: break
 
             pitch_list_minus_duplicates, freq_list_minus_duplicates = self.remove_consecutive_duplicates(pitches)
+            print(pitch_list_minus_duplicates)
+            print(freq_list_minus_duplicates)
             return pitch_list_minus_duplicates, freq_list_minus_duplicates
 
-        except IOError as e:
+        except Exception as e:
             error_str = "Could not open file:{}. Error: {}".format(self.filepath, e)
             print(error_str)
 
