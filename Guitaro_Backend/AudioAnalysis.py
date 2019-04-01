@@ -59,8 +59,6 @@ class AudioAnalysis:
                 if read < hop_s: break
 
             pitch_list_minus_duplicates, freq_list_minus_duplicates = self.remove_consecutive_duplicates(pitches)
-            print(pitch_list_minus_duplicates)
-            print(freq_list_minus_duplicates)
             return pitch_list_minus_duplicates, freq_list_minus_duplicates
 
         except Exception as e:
@@ -165,7 +163,7 @@ class AudioAnalysis:
                 total_frames += read
                 if read < hop_s: break
 
-            self.plot_onset_image(allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc)
+            #self.plot_onset_image(allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc)
             # print(onset_time_list)
             return onset_time_list
         except IOError as e:

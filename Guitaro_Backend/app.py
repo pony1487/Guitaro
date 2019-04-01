@@ -20,11 +20,6 @@ CORS(app)
 app.config['UPLOAD_FOLDER'] = guitaroconfig.UPLOAD_FOLDER
 
 
-@app.route('/')
-def welcome():
-    return render_template("upload.html")
-
-
 @app.route('/topics')
 def list_topics():
     file_manager = FileManager("topics")
@@ -97,15 +92,14 @@ def get_chord_notation(plan, lesson):
     plan += "/"
     file_manager = FileManager(plan_path + plan)
 
-    #DEBUG
+    # DEBUG
     d = {
-        "lesson_fret_list":[],
-        "lesson_string_list":[],
+        "lesson_fret_list": [],
+        "lesson_string_list": [],
         "duration_list": [],
         "total_beats": 4
     }
     return jsonify(d)
-
 
 
 @app.route('/plans/<plan>')
@@ -233,49 +227,9 @@ def analyse_user_chords(dirone, dirtwo, lesson):
             return "Wrong File type: Must be wav"
 
 
-@app.route('/practice-generator')
-def practice_generator_form():
-    """
-    This is for testing only. When creating client use the topics route to populate the select list
-    :return:
-    """
-    file_manager = FileManager("topic")
-    topics_str = file_manager.list_directories()
-
-    # convert from str
-    json_of_topics = json.loads(topics_str)
-    topic_list = json_of_topics['directories']
-    return render_template("practice_generator.html", list_of_topics=topic_list)
-
-
-@app.route('/generate-routine', methods=['POST'])
-def generate_routine():
-    if request.method == 'POST':
-        multiselect = request.form.getlist('Topics')
-        time = request.form['Time']
-
-        form_dict = dict()
-        form_dict["topics"] = multiselect
-        form_dict["time"] = time
-
-        # DEBUG. Will need to handle multiple topics
-        single_topic = multiselect[0]
-        practice_generator = PracticeGenerator(single_topic)
-        practice_generator.get_topic_path()
-        practice_generator.get_random_lesson_names()
-
-        return jsonify(form_dict)
-    return Response(status=400)
-
-
-@app.route('/test-post', methods=['POST'])
-def test_post():
-    if request.method == 'POST':
-        d = dict()
-        d["message"] = "Success"
-        print(d)
-        return jsonify(d)
-    return Response(status=400)
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':

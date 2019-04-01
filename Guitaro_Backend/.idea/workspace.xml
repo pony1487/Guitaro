@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521660ad-b1a7-4b01-8ebf-a85f9a043d7a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/test_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AudioAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/AudioAnalysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/FileManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/practice_generator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/upload.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,42 +69,42 @@
         <counts>
           <entry key="Dockerfile" value="67" />
           <entry key="dummy" value="21" />
-          <entry key="html" value="499" />
+          <entry key="html" value="521" />
           <entry key="json" value="24" />
           <entry key="md" value="11" />
-          <entry key="py" value="31131" />
+          <entry key="py" value="31449" />
           <entry key="txt" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Dockerfile" value="67" />
-          <entry key="HTML" value="499" />
+          <entry key="HTML" value="521" />
           <entry key="JSON" value="24" />
           <entry key="Markdown" value="11" />
           <entry key="PLAIN_TEXT" value="65" />
-          <entry key="Python" value="31131" />
+          <entry key="Python" value="31449" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Dockerfile" value="5" />
           <entry key="Notation_algo_test" value="1" />
-          <entry key="html" value="12" />
+          <entry key="html" value="14" />
           <entry key="json" value="7" />
           <entry key="md" value="3" />
-          <entry key="py" value="128" />
+          <entry key="py" value="130" />
           <entry key="txt" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Dockerfile" value="5" />
-          <entry key="HTML" value="12" />
+          <entry key="HTML" value="14" />
           <entry key="JSON" value="7" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="128" />
+          <entry key="Python" value="130" />
         </counts>
       </usages-collector>
     </session>
@@ -110,10 +114,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
-              <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
+            <state relative-caret-position="90">
+              <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="45" />
               <folding>
-                <element signature="e#812#900#0" />
                 <element signature="e#946#1033#0" />
                 <element signature="e#1102#1310#0" />
               </folding>
@@ -121,11 +124,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AudioComparison.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/test_app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state>
+              <caret column="7" selection-start-column="7" selection-end-column="7" />
+              <folding>
+                <marker date="1554116791984" expanded="true" signature="1102:1103" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,21 +139,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="135">
+              <caret line="165" column="13" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
-                <marker date="1554114566374" expanded="true" signature="8646:8652" ph="..." />
+                <marker date="1554116561766" expanded="true" signature="8554:8560" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_audio_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="198" selection-start-line="11" selection-start-column="198" selection-end-line="11" selection-end-column="198" />
+            <state>
+              <caret selection-end-line="5" selection-end-column="39" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <marker date="1554114566474" expanded="true" signature="127:128" ph="..." />
@@ -159,8 +165,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_pitch_speller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="38" />
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="25" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -174,14 +180,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>spell</find>
       <find>itertools</find>
       <find>fret_frequencies_to_string_number_mapping</find>
       <find>freq_in_recording</find>
@@ -211,6 +216,7 @@
       <find>get_num_of_notes_between_notes</find>
       <find>find_nearest_and_dedup_freq_list</find>
       <find>__pad_note_durations</find>
+      <find>flaskr</find>
     </findStrings>
     <replaceStrings>
       <replace>bucket_response</replace>
@@ -224,6 +230,7 @@
       <replace>110.00</replace>
       <replace>__find_string_of_notes</replace>
       <replace>__find_frets_and_strings_of_notes</replace>
+      <replace>app</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -256,7 +263,6 @@
         <option value="$PROJECT_DIR$/app_utils.py" />
         <option value="$PROJECT_DIR$/AudioComparison.py" />
         <option value="$PROJECT_DIR$/fret_mappings.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/test/test_pytest.py" />
         <option value="$PROJECT_DIR$/PitchSpeller.py" />
         <option value="$PROJECT_DIR$/test/notation_mock_data.py" />
@@ -265,8 +271,12 @@
         <option value="$PROJECT_DIR$/test/test_notation.py" />
         <option value="$PROJECT_DIR$/test/test_file_manager.py" />
         <option value="$PROJECT_DIR$/FileManager.py" />
-        <option value="$PROJECT_DIR$/AudioAnalysis.py" />
         <option value="$PROJECT_DIR$/test/test_audio_analysis.py" />
+        <option value="$PROJECT_DIR$/test/conftest.py" />
+        <option value="$PROJECT_DIR$/templates/404.html" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/AudioAnalysis.py" />
+        <option value="$PROJECT_DIR$/test/test_app.py" />
       </list>
     </option>
   </component>
@@ -294,6 +304,11 @@
             <path>
               <item name="Guitaro_Backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="Guitaro_Backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Guitaro_Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Guitaro_Backend" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Guitaro_Backend" type="b2602c69:ProjectViewProjectNode" />
@@ -660,6 +675,15 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
@@ -673,12 +697,12 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32952693" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007576" side_tool="true" weight="0.588907" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.48613375" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.45513865" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="REST Client" order="13" sideWeight="0.5681818" weight="0.50734097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -787,13 +811,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/practice_generator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -872,18 +889,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
-          <folding>
-            <element signature="e#812#900#0" />
-            <element signature="e#946#1033#0" />
-            <element signature="e#1102#1310#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_notation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -913,23 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_pitch_speller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AudioComparison.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FileManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -937,24 +925,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
+    <entry file="file://$PROJECT_DIR$/test/conftest.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_audio_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state>
+          <caret selection-end-line="5" selection-end-column="39" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
-            <marker date="1554114566374" expanded="true" signature="8646:8652" ph="..." />
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1554114566474" expanded="true" signature="127:128" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_audio_analysis.py">
+    <entry file="file://$PROJECT_DIR$/test/test_pitch_speller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="198" selection-start-line="11" selection-start-column="198" selection-end-line="11" selection-end-column="198" />
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="25" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <marker date="1554114566474" expanded="true" signature="127:128" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/practice_generator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="58" column="45" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="45" />
+          <folding>
+            <element signature="e#946#1033#0" />
+            <element signature="e#1102#1310#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AudioComparison.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="165" column="13" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1554116561766" expanded="true" signature="8554:8560" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+          <folding>
+            <marker date="1554116791984" expanded="true" signature="1102:1103" ph="..." />
           </folding>
         </state>
       </provider>
