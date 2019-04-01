@@ -3,6 +3,7 @@ from fret_mappings import fret_mappings, strings, number_of_beats_dictionary
 
 from pandas import DataFrame
 
+
 class Notation:
 
     def __init__(self, freqs_in_recording, timing_list, bpm):
@@ -37,25 +38,25 @@ class Notation:
         }
 
         self.freqs_in_recording = freqs_in_recording
-        self.start_frets = list()
 
-        # init a two d list with Zeros that represents 6 strings and 12 frets per string
-        # (13 across to account for the open string)
-        self.played_note_locations = [[0 for i in range(13)] for j in range(6)]
-
-        self.strings_to_be_played_list = list()
-        self.frets_to_be_played_list = list()
+        # self.strings_to_be_played_list = list()
+        # self.frets_to_be_played_list = list()
 
         # Get frets and strings
-        self.__find_played_note_locations()
-        self.__get_start_fret_of_each_string()
-        self.__find_frets_and_strings_of_notes()
+        self.played_note_locations = self.__find_played_note_locations()
+
+        self.start_frets = self.__get_start_fret_of_each_string()
+
+        self.strings_to_be_played_list, self.frets_to_be_played_list = self.__find_frets_and_strings_of_notes()
 
         # Get durations of notes
         self.duration_list = self.__get_note_durations_of_timing_list(self.timing_list)
         self.padded_duration_list = self.__pad_note_durations(self.duration_list)
 
     def __find_played_note_locations(self):
+        # init a two d list with Zeros that represents 6 strings and 12 frets per string
+        # (13 across to account for the open string)
+        note_locations = [[0 for i in range(13)] for j in range(6)]
 
         # Fill 2d array with locations of notes played
         for i in range(0, len(self.strings)):
@@ -69,21 +70,26 @@ class Notation:
                     fret = gtr_string.index(freq)
                     s = "freq: {} fret: {}".format(freq, fret)
                     # print("i: " + str(i) + " j: " + str(j))
-                    self.played_note_locations[i][fret] = 1
-
-        #print(DataFrame(self.played_note_locations))
+                    note_locations[i][fret] = 1
+        # print(DataFrame(self.played_note_locations))
+        return note_locations
 
     def __get_start_fret_of_each_string(self):
+        start_frets = list()
+
         # Get the first fret played on each string
         for i in range(0, len(self.played_note_locations)):
             string = self.played_note_locations[i]
 
             for j in range(0, len(string)):
                 if string[j] == 1:
-                    self.start_frets.append(j)
+                    start_frets.append(j)
                     break
+        return start_frets
 
     def __find_frets_and_strings_of_notes(self):
+        strings_to_be_played_list = list()
+        frets_to_be_played_list = list()
 
         # Catch if there is just silence submitted
         if self.start_frets:
@@ -99,11 +105,12 @@ class Notation:
 
                         fret_of_freq = string_dict.get(freq)
                         if start_fret - 1 <= fret_of_freq <= start_fret + 3:
-                            self.strings_to_be_played_list.append(string)
-                            self.frets_to_be_played_list.append(fret_of_freq)
-
+                            strings_to_be_played_list.append(string)
+                            frets_to_be_played_list.append(fret_of_freq)
         else:
             print("Notation.py: start_frets is empty! Silence being submitted is probable cause")
+
+        return strings_to_be_played_list, frets_to_be_played_list
 
     def __get_note_durations_of_timing_list(self, arr):
         """
@@ -129,6 +136,9 @@ class Notation:
             duration, index = self.__find_nearest(note_durations, diff)
             duration = float(duration)
             duration_index = note_durations.index(duration)
+            s = "dutraion: {} note_durations.index({}) = {}".format(duration,duration,duration_index)
+
+            print(s)
             return_list.append(duration_name[duration_index])
 
         # we assume that the last note played is always the same duration as the one that came before it.
@@ -139,6 +149,7 @@ class Notation:
             second_last_note_duration = return_list[-1]
             return_list.append(second_last_note_duration)
 
+        print(return_list)
         return return_list
 
     def __get_note_duration_given_tempo(self, bpm):
@@ -195,6 +206,7 @@ class Notation:
             for key, val in self.number_of_beats_dictionary.items():
                 if val <= diff:
                     diff = diff % val
+
 
                     arr.append(key)
             print("arr padded: " + str(arr))

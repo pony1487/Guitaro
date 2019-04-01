@@ -2,6 +2,7 @@ import aubio
 import itertools
 
 from numpy import hstack, zeros
+import matplotlib.pyplot as plt
 
 from PitchSpeller import PitchSpeller
 
@@ -131,7 +132,7 @@ class AudioAnalysis:
             o = aubio.onset("default", win_s, hop_s, samplerate)
 
             # One threshold does not seem to work for all cases
-            o.set_threshold(0.45)
+            o.set_threshold(1.5)
 
             # list of when peaks happen at time t(seconds)
             onset_time_list = []
@@ -161,11 +162,43 @@ class AudioAnalysis:
                 total_frames += read
                 if read < hop_s: break
 
-            #print(onset_time_list)
+            self.plot_onset_image(allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc)
+            # print(onset_time_list)
             return onset_time_list
         except IOError as e:
             error_str = "Could not open file:{}. Error: {}".format(self.filepath, e)
             print(error_str)
+
+    def plot_onset_image(self, allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc):
+        if 1:
+            # do plotting
+
+            allsamples_max = (allsamples_max > 0) * allsamples_max
+            allsamples_max_times = [float(t) * hop_s / downsample / samplerate for t in range(len(allsamples_max))]
+            plt1 = plt.axes([0.1, 0.75, 0.8, 0.19])
+            plt2 = plt.axes([0.1, 0.1, 0.8, 0.65], sharex=plt1)
+            plt.rc('lines', linewidth='.8')
+            plt1.plot(allsamples_max_times, allsamples_max, '-b')
+            plt1.plot(allsamples_max_times, -allsamples_max, '-b')
+            for stamp in onsets:
+                stamp /= float(samplerate)
+                plt1.plot([stamp, stamp], [-1., 1.], '-r')
+            plt1.axis(xmin=0., xmax=max(allsamples_max_times))
+            plt1.xaxis.set_visible(False)
+            plt1.yaxis.set_visible(False)
+            desc_times = [float(t) * hop_s / samplerate for t in range(len(desc))]
+            desc_max = max(desc) if max(desc) != 0 else 1.
+            desc_plot = [d / desc_max for d in desc]
+            plt2.plot(desc_times, desc_plot, '-g')
+            tdesc_plot = [d / desc_max for d in tdesc]
+            for stamp in onsets:
+                stamp /= float(samplerate)
+                plt2.plot([stamp, stamp], [min(tdesc_plot), max(desc_plot)], '-r')
+            plt2.plot(desc_times, tdesc_plot, '-y')
+            plt2.axis(ymin=min(tdesc_plot), ymax=max(desc_plot))
+            plt.xlabel('time (s)')
+            # plt.savefig('./images/noise_at_start_and_wrong_transient.png', dpi=300)
+            plt.show()
 
     def get_timing_list(self):
         return self.timing_list

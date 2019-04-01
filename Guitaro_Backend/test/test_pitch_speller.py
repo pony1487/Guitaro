@@ -10,7 +10,7 @@ class TestPitchSpeller(object):
 
     def test_spell(self):
         pitch_speller = PitchSpeller()
-        note = pitch_speller.spell(220.00)
+        note = pitch_speller.spell(220)
         assert note == 'A'
 
     def test_negative_input(self):

@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="521660ad-b1a7-4b01-8ebf-a85f9a043d7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AudioAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/AudioAnalysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Notation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PitchSpeller.py" beforeDir="false" afterPath="$PROJECT_DIR$/PitchSpeller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_notation.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_notation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_pitch_speller.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_pitch_speller.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Guitaro_Backend$Guitaro_Backend.coverage" NAME="Guitaro_Backend Coverage Results" MODIFIED="1553949640327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Guitaro_Backend$Guitaro_Backend.coverage" NAME="Guitaro_Backend Coverage Results" MODIFIED="1554110093569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1971039829">
@@ -70,7 +72,7 @@
           <entry key="html" value="499" />
           <entry key="json" value="24" />
           <entry key="md" value="11" />
-          <entry key="py" value="29102" />
+          <entry key="py" value="30762" />
           <entry key="txt" value="44" />
         </counts>
       </usages-collector>
@@ -81,7 +83,7 @@
           <entry key="JSON" value="24" />
           <entry key="Markdown" value="11" />
           <entry key="PLAIN_TEXT" value="65" />
-          <entry key="Python" value="29102" />
+          <entry key="Python" value="30762" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -91,7 +93,7 @@
           <entry key="html" value="12" />
           <entry key="json" value="7" />
           <entry key="md" value="3" />
-          <entry key="py" value="113" />
+          <entry key="py" value="124" />
           <entry key="txt" value="8" />
         </counts>
       </usages-collector>
@@ -102,7 +104,7 @@
           <entry key="JSON" value="7" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="113" />
+          <entry key="Python" value="124" />
         </counts>
       </usages-collector>
     </session>
@@ -112,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="1125">
               <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
               <folding>
                 <element signature="e#812#900#0" />
@@ -124,38 +126,53 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_pitch_speller.py">
+        <entry file="file://$PROJECT_DIR$/AudioComparison.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" lean-forward="true" selection-end-line="29" />
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="19" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
-                <marker date="1554038388362" expanded="true" signature="125:767" ph="..." />
+                <element signature="e#0#12#0" expanded="true" />
+                <marker date="1554110844245" expanded="true" signature="8550:8556" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Notation.py">
+        <entry file="file://$PROJECT_DIR$/fret_mappings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="57" column="36" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="121">
+              <caret line="89" column="11" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FileManager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="47" column="50" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/test_notation.py">
+        <entry file="file://$PROJECT_DIR$/test/test_file_manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+            <state relative-caret-position="158">
+              <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <marker date="1554038882061" expanded="true" signature="112:118" ph="..." />
+                <marker date="1554113259962" expanded="true" signature="121:122" ph="..." />
               </folding>
             </state>
           </provider>
@@ -196,7 +213,6 @@
       <find>AudioComparison</find>
       <find>find_nearest</find>
       <find>__get_note_duration_given_tempo</find>
-      <find>__pad_note_durations</find>
       <find>calculate_total_beats</find>
       <find>plot_figures</find>
       <find>analyse_notes</find>
@@ -204,6 +220,7 @@
       <find>print</find>
       <find>get_num_of_notes_between_notes</find>
       <find>find_nearest_and_dedup_freq_list</find>
+      <find>__pad_note_durations</find>
     </findStrings>
     <replaceStrings>
       <replace>bucket_response</replace>
@@ -246,17 +263,19 @@
         <option value="$PROJECT_DIR$/guitaroconfig.py" />
         <option value="$PROJECT_DIR$/Notation_algo_test" />
         <option value="$PROJECT_DIR$/Notation_test.py" />
-        <option value="$PROJECT_DIR$/FileManager.py" />
-        <option value="$PROJECT_DIR$/AudioAnalysis.py" />
         <option value="$PROJECT_DIR$/app_utils.py" />
         <option value="$PROJECT_DIR$/AudioComparison.py" />
         <option value="$PROJECT_DIR$/fret_mappings.py" />
-        <option value="$PROJECT_DIR$/Notation.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/test/test_pytest.py" />
         <option value="$PROJECT_DIR$/PitchSpeller.py" />
+        <option value="$PROJECT_DIR$/test/notation_mock_data.py" />
         <option value="$PROJECT_DIR$/test/test_pitch_speller.py" />
+        <option value="$PROJECT_DIR$/Notation.py" />
+        <option value="$PROJECT_DIR$/AudioAnalysis.py" />
         <option value="$PROJECT_DIR$/test/test_notation.py" />
+        <option value="$PROJECT_DIR$/FileManager.py" />
+        <option value="$PROJECT_DIR$/test/test_file_manager.py" />
       </list>
     </option>
   </component>
@@ -270,7 +289,7 @@
     <option name="x" value="683" />
     <option name="y" value="25" />
     <option name="width" value="683" />
-    <option name="height" value="743" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -659,7 +678,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952693" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.588907" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.3980424" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -668,22 +687,22 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007576" side_tool="true" weight="0.588907" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.26427406" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.48613375" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="REST Client" order="13" sideWeight="0.5681818" weight="0.50734097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.575" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24242425" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24242425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952693" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.588907" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.3980424" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -692,13 +711,13 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007576" side_tool="true" weight="0.588907" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.26427406" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.48613375" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="REST Client" order="13" sideWeight="0.5681818" weight="0.50734097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.575" />
       <window_info anchor="right" id="Database" order="4" />
     </layout-to-restore>
   </component>
@@ -828,39 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fret_mappings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="89" column="11" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
-          <folding>
-            <element signature="e#812#900#0" />
-            <element signature="e#946#1033#0" />
-            <element signature="e#1102#1310#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -875,48 +861,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/notation_mock_data.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/PitchSpeller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="103" column="16" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AudioComparison.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1416">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_pitch_speller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" lean-forward="true" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <marker date="1554038388362" expanded="true" signature="125:767" ph="..." />
-          </folding>
+        <state relative-caret-position="-30">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Notation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="57" column="36" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="36" />
+        <state relative-caret-position="-60">
+          <caret line="124" column="16" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="99" column="10" selection-start-line="99" selection-start-column="10" selection-end-line="99" selection-end-column="10" />
+          <folding>
+            <element signature="e#812#900#0" />
+            <element signature="e#946#1033#0" />
+            <element signature="e#1102#1310#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AudioComparison.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1554110844245" expanded="true" signature="8550:8556" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fret_mappings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="89" column="11" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/test_notation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        <state>
+          <caret selection-end-line="5" selection-end-column="29" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <marker date="1554038882061" expanded="true" signature="112:118" ph="..." />
+            <marker date="1554111424653" expanded="true" signature="112:118" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_pitch_speller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="47" column="50" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_file_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="44" column="19" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1554113259962" expanded="true" signature="121:122" ph="..." />
           </folding>
         </state>
       </provider>

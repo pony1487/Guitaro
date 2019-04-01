@@ -28,14 +28,14 @@ class PitchSpeller:
         """
         This method takes a frequency and finds the index of the value it is closed to in the frequencies list. This
         index is then used to get the corresponding char in the notes list.
-        :param frequency:
+        :param frequency: integer
         :return: the note of corresponding the frequency
         """
 
-        min_freq = 82.41
-        max_freq = 1318.51
+        min_freq = 80
+        max_freq = 1500
 
-        if isinstance(frequency, float) and min_freq <= frequency <= max_freq:
+        if isinstance(frequency, int) and min_freq <= frequency <= max_freq:
             freq_index = 0
             note_index = 0
 
@@ -46,7 +46,8 @@ class PitchSpeller:
 
             return self.notes[note_index]
         else:
-            raise Exception("Bad Frequency Input")
+            exception_str = "Bad Frequency Input: {}".format(frequency)
+            raise Exception(exception_str)
 
     def get_num_of_notes_between_notes(self, frequency_a, frequency_b):
         """
