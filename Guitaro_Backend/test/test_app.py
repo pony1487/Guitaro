@@ -44,3 +44,13 @@ def test_get_lesson_notation(client):
     expected_output = b'{"bpm":"95","lesson_fret_list":[5,8,5,7,5,7],"lesson_string_list":["E","E","A","A","D","D"],"padded_duration_list":["half","half","half","half","half","half"],"total_beats":12}\n'
 
     assert expected_output in rv.data
+
+
+def test_get_lesson_notation_bad_input(client):
+    route = "notation/topisssssscs/picking/A_minor_pentatonic_ascending-95.wav"
+    rv = client.get(route)
+    print(rv.data)
+
+    expected_output = b'<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <title>Page not found</title>\n    <div id="main">\n    \t<div class="fof">\n        \t\t<h1>Error 404</h1>\n    \t</div>\n</div>\n</head>\n<body>\n\n</body>\n</html>'
+
+    assert expected_output in rv.data

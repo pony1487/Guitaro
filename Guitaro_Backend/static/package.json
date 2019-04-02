@@ -1,0 +1,26 @@
+{
+  "name": "guitaro_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "watch": "webpack --progress -d --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pony1487/Guitaro-Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pony1487/Guitaro-Frontend/issues"
+  },
+  "homepage": "https://github.com/pony1487/Guitaro-Frontend#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^2.0.1",
+    "webpack": "^4.29.6"
+  }
+}

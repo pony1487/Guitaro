@@ -47,7 +47,7 @@ class AudioComparison:
         counter = 0
 
         # check if the list is empty. Its empty if the there is just background noise submitted
-        if self.user_note_list:
+        if self.user_note_list and self.lesson_note_list:
             # Determine the index of the incorrect note
             while counter < expected_len_of_list:
                 if counter == len(self.user_note_list):
@@ -82,7 +82,7 @@ class AudioComparison:
         percent_list = []
 
         # Only compare timing if there were actual notes played by user.
-        if self.user_note_list:
+        if self.user_timing_list and self.lesson_timing_list:
             for i in range(0, len(self.lesson_timing_list)):
                 if i > len(self.user_timing_list) - 1:
                     break

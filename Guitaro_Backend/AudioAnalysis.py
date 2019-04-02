@@ -11,8 +11,9 @@ class AudioAnalysis:
 
     def __init__(self, filepath):
         self.filepath = filepath
-        self.timing_list = []
-        self.note_list = []
+        self.timing_list = list()
+        self.note_list = list()
+        self.frequency_list = list()
 
     def analyse_notes(self):
         """
@@ -27,10 +28,10 @@ class AudioAnalysis:
         win_s = 4096 // downsample  # fft size
         hop_s = 512 // downsample  # hop size
 
-
         # TAKES A STR ARG FOR THE FILE PATH, NOT THE FILE ITSELF
         try:
             s = aubio.source(self.filepath, samplerate, hop_s)
+
             samplerate = s.samplerate
 
             tolerance = 0.8
@@ -163,10 +164,10 @@ class AudioAnalysis:
                 total_frames += read
                 if read < hop_s: break
 
-            #self.plot_onset_image(allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc)
+            # self.plot_onset_image(allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc)
             # print(onset_time_list)
             return onset_time_list
-        except IOError as e:
+        except Exception as e:
             error_str = "Could not open file:{}. Error: {}".format(self.filepath, e)
             print(error_str)
 

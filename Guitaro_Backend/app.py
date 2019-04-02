@@ -20,6 +20,11 @@ CORS(app)
 app.config['UPLOAD_FOLDER'] = guitaroconfig.UPLOAD_FOLDER
 
 
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
 @app.route('/topics')
 def list_topics():
     file_manager = FileManager("topics")
@@ -72,17 +77,21 @@ def get_lesson_notation(topic, lesson):
     lesson_note_list, lesson_freq_list = lesson_analysis.analyse_notes()
     lesson_timing_list = lesson_analysis.analyse_timing()
 
-    lesson_notation_creator = Notation(lesson_freq_list, lesson_timing_list, bpm)
+    if bpm < 0:
+        return "Error: No tempo present in filename"
+    else:
 
-    lesson_string_list = lesson_notation_creator.get_strings_to_be_played()
-    lesson_fret_list = lesson_notation_creator.get_frets_to_be_played()
-    padded_duration_list = lesson_notation_creator.get_padded_duration_list()
+        lesson_notation_creator = Notation(lesson_freq_list, lesson_timing_list, bpm)
 
-    total_beats = lesson_notation_creator.calculate_total_beats(padded_duration_list)
+        lesson_string_list = lesson_notation_creator.get_strings_to_be_played()
+        lesson_fret_list = lesson_notation_creator.get_frets_to_be_played()
+        padded_duration_list = lesson_notation_creator.get_padded_duration_list()
 
-    d = app_utils.create_dictionary(lesson_string_list=lesson_string_list, lesson_fret_list=lesson_fret_list,
-                                    padded_duration_list=padded_duration_list, total_beats=total_beats, bpm=bpm)
-    return jsonify(d)
+        total_beats = lesson_notation_creator.calculate_total_beats(padded_duration_list)
+
+        d = app_utils.create_dictionary(lesson_string_list=lesson_string_list, lesson_fret_list=lesson_fret_list,
+                                        padded_duration_list=padded_duration_list, total_beats=total_beats, bpm=bpm)
+        return jsonify(d)
 
 
 # Notate chord lesson
@@ -142,8 +151,6 @@ def analyse_user_recording(dirone, dirtwo, lesson):
         # Users attempt
         file = request.files['file']
 
-        print(file.filename)
-
         # Path to where the lesson the user attempted is stored
         lesson_path = "{}/{}".format(dirone, dirtwo)
 
@@ -151,7 +158,8 @@ def analyse_user_recording(dirone, dirtwo, lesson):
         lesson_file_path = file_manager.get_lesson_path("/" + lesson)
         bpm = file_manager.get_tempo_from_file_name(lesson)
 
-        if file and app_utils.allowed_file(file.filename):
+        # There is a file, it has the right extension and it has a tempo
+        if file and app_utils.allowed_file(file.filename) and int(bpm) > 0:
             filename = secure_filename(file.filename)
             # Save user file to be analysed
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -186,8 +194,10 @@ def analyse_user_recording(dirone, dirtwo, lesson):
                                                user_duration_list, total_beats)
 
             return jsonify(audio_comparison.get_comparision_dict())
+
+
         else:
-            return "Wrong File type: Must be wav"
+            return "Wrong File type: Must be wav and contain tempo"
 
 
 @app.route('/analyse-chords/<dirone>/<dirtwo>/<lesson>', methods=['POST'])

@@ -54,3 +54,4 @@ class FileManager:
             error_str = "Error: Not valid filename. Filename should be <name-tempo.wav> format. Recieved: \'{}\'".format(
                 lesson_name)
             print(error_str)
+            return -1
