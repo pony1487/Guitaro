@@ -260,7 +260,7 @@ def analyse_user_chords(dirone, dirtwo, lesson):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('errors/404.html'), 404
 
 
 if __name__ == '__main__':
