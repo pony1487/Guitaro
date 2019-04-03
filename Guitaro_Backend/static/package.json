@@ -22,5 +22,15 @@
   "devDependencies": {
     "clean-webpack-plugin": "^2.0.1",
     "webpack": "^4.29.6"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-loader": "^3.0.3",
+    "css-loader": "^2.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7",
+    "recorderjs": "^1.0.1",
+    "vexflow": "^1.2.89",
+    "web-audio-recorder-js": "0.0.2"
   }
 }

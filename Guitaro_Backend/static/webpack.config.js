@@ -5,11 +5,9 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     entry: {
         index: './js/index.js',
-        //topics: './src/js/topics.js',
-        //plans: './src/js/plans.js',
-        //audio_processor: './src/js/audio_processor.js',
-        //account: './src/js/account.js'
-
+        topics: './js/topics.js',
+        plans: './js/plans.js',
+        audio_processor: './js/audio_processor.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

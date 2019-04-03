@@ -9,6 +9,7 @@ from chordrecognition.ChordComparison import ChordComparison
 from guitaroconfig import valid_directories, valid_topics, valid_plans
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
+from flask_jsglue import JSGlue
 
 import os
 import guitaroconfig
@@ -16,13 +17,33 @@ import app_utils
 import json
 
 app = Flask(__name__)
+jsglue = JSGlue(app)
+
 CORS(app)
 app.config['UPLOAD_FOLDER'] = guitaroconfig.UPLOAD_FOLDER
 
 
+# MOVE THESE TO THERE OWN FILE
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+@app.route('/topics_page')
+def topics_page():
+    return render_template("topics.html")
+
+
+@app.route('/plans_page')
+def plans_page():
+    return render_template("plans.html")
+
+
+@app.route('/audio_processor_page')
+def audio_processor_page():
+    return render_template("audio_processor.html")
+
+#############################################
 
 
 @app.route('/topics')
@@ -77,7 +98,7 @@ def get_lesson_notation(topic, lesson):
     lesson_note_list, lesson_freq_list = lesson_analysis.analyse_notes()
     lesson_timing_list = lesson_analysis.analyse_timing()
 
-    if bpm < 0:
+    if int(bpm) < 0:
         return "Error: No tempo present in filename"
     else:
 

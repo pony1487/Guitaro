@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/starter-template.css">
+
+    <title>Guitaro</title>
+</head>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Guitaro</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+</nav>
+<!--
+<div class="page-header">
+    <h1 id="lesson_header">Lesson</h1>
+</div> -->
+
+
+<div class="container text-center">
+    <h3 id="lesson_header">Lesson</h3>
+</div>
+
+<hr>
+
+<div class="container text-center">
+    <div class="row">
+      <div class="col-lg-6">
+        <p>Lesson</p>
+      </div>
+      <div class="col-lg-6">
+        <p>Your attempt</p>
+      </div>
+    </div>
+  </div>
+
+<div class="container text-center">
+  <div class="row">
+      <div class="col-lg-6">
+        <div id="lesson_notation"></div>
+        <canvas id="lessonNotationCanvas" width="500" height="200"></canvas>
+      </div>
+      <div id="user_notation_parent" class="col-lg-6">
+        <div id="user_notation"></div>
+        <canvas id="userNotationCanvas" width="500" height="200"></canvas>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid text-center">
+  <div class="container">
+    <div id="audio_player_container">
+    </div>
+  </div>
+</div>
+
+<hr>
+<br>
+
+
+<div class="container-fluid text-center">
+    <div id="playback_and_recording_controls" class="container">
+        <button id="play_button" class="btn btn-secondary">Play</button>
+        <button id="stop_playing_button" class="btn btn-secondary">Stop Playback</button>
+
+        <button id="pause_button" class="btn btn-secondary">Pause</button>
+        <button id="record_button" class="btn btn-secondary">Record</button>
+        <button id="stop_button" class="btn btn-secondary">Stop Recording</button>
+    </div>
+</div>
+
+<!-- toast for count in -->
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <h2 id="count_in_toast"></h2>
+      </div>
+    </div>
+</div>
+
+
+
+<!--This popups when user submits a recording to show uploading is happening-->
+<div class="modal fade" id="uploadProgressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Processing...</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="modal_body" class="modal-body">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Analysing Recording...</span>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!--This is used for display feedback to users-->
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="modal_body" class="modal-body">
+        <p id="lesson_name"></p>
+        <p id="lesson_bpm"></p>
+        <p id="lesson_feedback"></p>
+        <p id="lesson_note_duration"></p>
+        <p id="user_note_duration"></p>
+        <p id="timing_difference"></p>
+        <p id="lesson_note_list"></p>
+        <p id="user_note_list"></p>
+        <p id="notes_not_in_lesson"></p>
+        <p id="wrong_notes_played"></p>
+        <hr>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--This is used to show the user a count in before playback/recording starts-->
+
+<!-- <div class="modal fade" id="countInModal" tabindex="-1" role="dialog" aria-labelledby="countInModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Get Ready...</h5>
+      </div>
+      <div id="modal_body" class="modal-body">
+          <div id="count_in_div"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="countInModalButton" type="button" class="btn btn-secondary" data-dismiss="modal">Stop Recording</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="../static/dist/audio_processor.bundle.js"></script>
+</body>
+</html>
