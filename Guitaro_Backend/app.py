@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request, send_file, render_template, Response
 from FileManager import FileManager
 from AudioAnalysis import AudioAnalysis
 from AudioComparison import AudioComparison
-from PracticeGenerator import PracticeGenerator
 from Notation import Notation
 from chordrecognition.ChordAnalyser import ChordAnalyser
 from chordrecognition.ChordComparison import ChordComparison
@@ -14,7 +13,6 @@ from flask_jsglue import JSGlue
 import os
 import guitaroconfig
 import app_utils
-import json
 
 app = Flask(__name__)
 jsglue = JSGlue(app)

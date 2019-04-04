@@ -1,0 +1,37 @@
+# npm and node stuff
+node_modules
+npm-debug.log
+Dockerfile*
+docker-compose*
+.dockerignore
+.git
+.gitignore
+README.md
+LICENSE
+.vscode
+
+# pytest and python stuff
+*.pyc
+__pycache__
+test
+
+.dockerignore
+Dockerfile
+db.sqlite3
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*,cover
+*.log
+
+*.zip
