@@ -4,12 +4,8 @@
 // https://addpipe.com/blog/using-recorder-js-to-capture-wav-audio-in-your-html5-web-site/
 // */
 
-console.log("Hello from audio_processor");
-
-const CONFIG = require('./config.json');
-
 import { stopRecording,recordLesson } from './audio_recorder';
-import { draw_tab,draw_chord } from './lesson_notation';
+import { draw_tab } from './lesson_notation';
 
 const PlaybackController = require('./PlaybackController.js');
 let playbackController = new PlaybackController();

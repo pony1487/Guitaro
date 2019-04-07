@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521660ad-b1a7-4b01-8ebf-a85f9a043d7a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AudioAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/AudioAnalysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/audio_processor.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/audio_processor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/audio_recorder.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/audio_recorder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/lesson_feedback.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/lesson_feedback.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/lesson_notation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/lesson_notation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/audio_processor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/audio_processor.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Guitaro_Backend$Guitaro_Backend.coverage" NAME="Guitaro_Backend Coverage Results" MODIFIED="1554641986774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Guitaro_Backend$Guitaro_Backend.coverage" NAME="Guitaro_Backend Coverage Results" MODIFIED="1554643548194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1971039829">
@@ -71,23 +76,23 @@
         <counts>
           <entry key="Dockerfile" value="67" />
           <entry key="dummy" value="21" />
-          <entry key="html" value="952" />
+          <entry key="html" value="1251" />
           <entry key="js" value="744" />
           <entry key="json" value="33" />
           <entry key="md" value="11" />
-          <entry key="py" value="34263" />
+          <entry key="py" value="35131" />
           <entry key="txt" value="79" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Dockerfile" value="67" />
-          <entry key="HTML" value="952" />
+          <entry key="HTML" value="1251" />
           <entry key="JSON" value="33" />
           <entry key="JavaScript" value="744" />
           <entry key="Markdown" value="11" />
           <entry key="PLAIN_TEXT" value="100" />
-          <entry key="Python" value="34263" />
+          <entry key="Python" value="35131" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -96,11 +101,11 @@
           <entry key="Notation_algo_test" value="1" />
           <entry key="css" value="6" />
           <entry key="dockerignore" value="1" />
-          <entry key="html" value="27" />
+          <entry key="html" value="28" />
           <entry key="js" value="17" />
           <entry key="json" value="15" />
           <entry key="md" value="3" />
-          <entry key="py" value="150" />
+          <entry key="py" value="151" />
           <entry key="txt" value="9" />
         </counts>
       </usages-collector>
@@ -108,12 +113,12 @@
         <counts>
           <entry key="CSS" value="6" />
           <entry key="Dockerfile" value="6" />
-          <entry key="HTML" value="27" />
+          <entry key="HTML" value="28" />
           <entry key="JSON" value="15" />
           <entry key="JavaScript" value="17" />
           <entry key="Markdown" value="3" />
           <entry key="PLAIN_TEXT" value="11" />
-          <entry key="Python" value="150" />
+          <entry key="Python" value="151" />
         </counts>
       </usages-collector>
     </session>
@@ -123,54 +128,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
+            <state relative-caret-position="426">
+              <caret line="289" column="35" selection-start-line="289" selection-start-column="13" selection-end-line="289" selection-end-column="35" />
               <folding>
                 <element signature="e#0#79#0" expanded="true" />
                 <element signature="e#2277#3465#0" />
+                <element signature="e#4710#7419#0" />
                 <element signature="e#7550#9000#0" />
-                <marker date="1554641920264" expanded="true" signature="9407:9811" ph="..." />
-                <marker date="1554641920264" expanded="true" signature="9810:9811" ph="..." />
+                <marker date="1554647505325" expanded="true" signature="9405:10495" ph="..." />
+                <marker date="1554647505325" expanded="true" signature="9941:10152" ph="..." />
+                <marker date="1554647505325" expanded="true" signature="10235:10495" ph="..." />
+                <marker date="1554647505325" expanded="true" signature="10494:10495" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/audio_processor.html">
+        <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="89" column="43" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/S3Manager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FileManager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="84" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="84" />
+            <state relative-caret-position="2520">
+              <caret line="168" column="59" selection-start-line="168" selection-start-column="59" selection-end-line="168" selection-end-column="59" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/guitaroconfig.py">
+        <entry file="file://$PROJECT_DIR$/templates/audio_processor.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="9" selection-start-line="1" selection-end-line="1" selection-end-column="9" />
+            <state relative-caret-position="2220">
+              <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
             </state>
           </provider>
         </entry>
@@ -218,8 +208,8 @@
       <find>Hello World</find>
       <find>url</find>
       <find>awsUrl</find>
-      <find>plot_onset_image</find>
       <find>print</find>
+      <find>plot_onset_image</find>
     </findStrings>
     <replaceStrings>
       <replace>bucket_response</replace>
@@ -287,12 +277,12 @@
         <option value="$PROJECT_DIR$/templates/topics.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/static/js/config.json" />
-        <option value="$PROJECT_DIR$/templates/audio_processor.html" />
         <option value="$PROJECT_DIR$/Notation.py" />
-        <option value="$PROJECT_DIR$/AudioAnalysis.py" />
         <option value="$PROJECT_DIR$/AudioFilter.py" />
         <option value="$PROJECT_DIR$/S3Manager.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/audio_processor.html" />
+        <option value="$PROJECT_DIR$/AudioAnalysis.py" />
       </list>
     </option>
   </component>
@@ -328,11 +318,6 @@
             <path>
               <item name="Guitaro_Backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="Guitaro_Backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Guitaro_Backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Guitaro_Backend" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -740,7 +725,7 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2128788" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2128788" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1052,13 +1037,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="209" selection-start-line="209" selection-end-line="209" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AudioFilter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -1076,6 +1054,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/S3Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FileManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1086,31 +1071,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/S3Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="76" column="8" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
+        <state relative-caret-position="426">
+          <caret line="289" column="35" selection-start-line="289" selection-start-column="13" selection-end-line="289" selection-end-column="35" />
           <folding>
             <element signature="e#0#79#0" expanded="true" />
             <element signature="e#2277#3465#0" />
+            <element signature="e#4710#7419#0" />
             <element signature="e#7550#9000#0" />
-            <marker date="1554641920264" expanded="true" signature="9407:9811" ph="..." />
-            <marker date="1554641920264" expanded="true" signature="9810:9811" ph="..." />
+            <marker date="1554647505325" expanded="true" signature="9405:10495" ph="..." />
+            <marker date="1554647505325" expanded="true" signature="9941:10152" ph="..." />
+            <marker date="1554647505325" expanded="true" signature="10235:10495" ph="..." />
+            <marker date="1554647505325" expanded="true" signature="10494:10495" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/audio_processor.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="89" column="43" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="43" />
+        <state relative-caret-position="2220">
+          <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AudioAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2520">
+          <caret line="168" column="59" selection-start-line="168" selection-start-column="59" selection-end-line="168" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

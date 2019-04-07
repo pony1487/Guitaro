@@ -220,8 +220,6 @@ def analyse_user_recording(dirone, dirtwo, lesson):
                                                user_duration_list, total_beats)
 
             return jsonify(audio_comparison.get_comparision_dict())
-
-
         else:
             return "Wrong File type: Must be wav and contain tempo"
 
@@ -277,6 +275,26 @@ def notate_strum(lesson):
 
     lesson_timing_list = lesson_analysis.analyse_timing()
     return str(lesson_timing_list)
+
+
+@app.route('/get-user-onset-image',methods=['GET'])
+def get_user_onset_image():
+    image_path = "./onset_images/user_recording.png"
+    try:
+        return send_file(image_path, mimetype="image/png", as_attachment=True,
+                         attachment_filename="user_recording")
+    except FileNotFoundError as e:
+        return str(e)
+
+
+@app.route('/get-lesson-onset-image',methods=['GET'])
+def get_lesson_onset_image():
+    image_path = "./onset_images/lesson_onset.png"
+    try:
+        return send_file(image_path, mimetype="image/png", as_attachment=True,
+                         attachment_filename="lesson_onset")
+    except FileNotFoundError as e:
+        return str(e)
 
 
 @app.errorhandler(404)

@@ -92,22 +92,6 @@
     </div>
 </div>
 
-<!-- toast for count in -->
-<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
-
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="toast-body">
-        <h2 id="count_in_toast"></h2>
-      </div>
-    </div>
-</div>
-
-
 
 <!--This popups when user submits a recording to show uploading is happening-->
 <div class="modal fade" id="uploadProgressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,60 +115,37 @@
     </div>
 </div>
 
-
-<!--This is used for display feedback to users-->
-<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div id="modal_body" class="modal-body">
-        <p id="lesson_name"></p>
-        <p id="lesson_bpm"></p>
-        <p id="lesson_feedback"></p>
-        <p id="lesson_note_duration"></p>
-        <p id="user_note_duration"></p>
-        <p id="timing_difference"></p>
-        <p id="lesson_note_list"></p>
-        <p id="user_note_list"></p>
-        <p id="notes_not_in_lesson"></p>
-        <p id="wrong_notes_played"></p>
-        <hr>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div class="container text-center">
+    <div class = "card">
+        <div id="feedback_card" class="card-body">
+            <h2 id="feedback_h2" class="h2"></h2>
+            <p id="lesson_name"></p>
+            <p id="lesson_bpm"></p>
+            <p id="lesson_feedback"></p>
+            <p id="lesson_note_duration"></p>
+            <p id="user_note_duration"></p>
+            <p id="timing_difference"></p>
+            <p id="lesson_note_list"></p>
+            <p id="user_note_list"></p>
+            <p id="notes_not_in_lesson"></p>
+            <p id="wrong_notes_played"></p>
+        </div>
     </div>
-  </div>
 </div>
 
 
-
-
-<!--This is used to show the user a count in before playback/recording starts-->
-
-<!-- <div class="modal fade" id="countInModal" tabindex="-1" role="dialog" aria-labelledby="countInModal" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Get Ready...</h5>
+<div class="container text-center">
+    <div class="row">
+      <div class="col-lg-6">
+          <p>Lesson</p>
+          <img id="lesson_onsets"/>
       </div>
-      <div id="modal_body" class="modal-body">
-          <div id="count_in_div"></div>
-      </div>
-      <div class="modal-footer">
-        <button id="countInModalButton" type="button" class="btn btn-secondary" data-dismiss="modal">Stop Recording</button>
+      <div class="col-lg-6">
+          <p>Your Attempt</p>
+          <img id="user_onsets"/>
       </div>
     </div>
   </div>
-</div> -->
-
-
 
 <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 

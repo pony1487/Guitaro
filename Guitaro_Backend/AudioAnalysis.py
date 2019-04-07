@@ -1,5 +1,6 @@
 import aubio
 import itertools
+import os
 
 from numpy import hstack, zeros
 import matplotlib.pyplot as plt
@@ -204,9 +205,18 @@ class AudioAnalysis:
             plt2.plot(desc_times, tdesc_plot, '-y')
             plt2.axis(ymin=min(tdesc_plot), ymax=max(desc_plot))
             plt.xlabel('time (s)')
-            # plt.savefig('./images/noise_at_start_and_wrong_transient.png', dpi=300)
-            plt.show()
 
+            # save the users onset image to be sent to client
+            if "user_recording" in self.filepath:
+                save_file_path = "./onset_images/user_recording.png"
+                plt.savefig(save_file_path, dpi=300)
+            else:
+                # save the lesson with a shorter file name
+                save_file_path = "./onset_images/lesson_onset.png"
+
+                # the file is saved when notation is gotten so dont recreate
+                if not os.path.isfile(save_file_path):
+                    plt.savefig(save_file_path, dpi=300)
 
     def get_timing_list(self):
         return self.timing_list

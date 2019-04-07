@@ -1,9 +1,4 @@
 import Vex from 'vexflow';
-/*
-var C7 = new Vex.Flow.StaveNote({ keys: ['C/4', 'E/4', 'G/4', 'Bb/4'], duration: '8'});
-C7.setStyle({fillStyle: "blue", strokeStyle: "blue"});
-
-*/
 
 class NotationDrawer{
     constructor(tab_notation) {
@@ -127,13 +122,6 @@ export function draw_tab(string_list,fret_list,note_durations,total_beats,elemen
         notationDrawer.setCoordinates();
         return notationDrawer.getCoordinates();
 }
-
-export function draw_chord(element_name){
-    console.log("draw chord");
-    let chord_notation = document.getElementById(element_name);
-
-}
-
 
 
 let string_note_to_number_mapping = {

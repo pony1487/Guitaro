@@ -1,4 +1,17 @@
-import { init_notation,draw_tab,draw_chord } from './lesson_notation';
+import { draw_tab,draw_chord } from './lesson_notation';
+
+const CONFIG = require('./config.json');
+let BASE_URL;
+
+// Set up local dev or prod aws
+let environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+if(environment == 'production'){
+    BASE_URL = CONFIG.awsUrl;
+}
+else if(environment == 'development'){
+    BASE_URL = CONFIG.localUrl;
+}
 
 export function processFeedbackJSON(feedBackObj){
 
@@ -34,24 +47,27 @@ export function processFeedbackJSON(feedBackObj){
     let note_coordinates = draw_tab(user_string_list,user_fret_list,user_note_durations,user_total_beats,"user_notation");
     let success = draw_feedback_overlay(note_coordinates,wrong_note_indexes);
 
+    let feedback_h2 = document.getElementById('feedback_h2');
+    let lesson_name_p = document.getElementById('lesson_name');
+    let lesson_bpm_p = document.getElementById('lesson_bpm');
+    let lesson_feedback_p = document.getElementById('lesson_feedback');
+    let lesson_note_duration_p = document.getElementById('lesson_note_duration');
+    let user_note_duration_p = document.getElementById('user_note_duration');
+    let timing_difference_p = document.getElementById('timing_difference');
+    let wrong_notes_played_p = document.getElementById('wrong_notes_played');
 
-    if(!success){
-        let lesson_name_p = document.getElementById('lesson_name');
-        let lesson_bpm_p = document.getElementById('lesson_bpm');
-        let lesson_feedback_p = document.getElementById('lesson_feedback');
-        let lesson_note_duration_p = document.getElementById('lesson_note_duration');
-        let user_note_duration_p = document.getElementById('user_note_duration');
-        let timing_difference_p = document.getElementById('timing_difference');
-        let wrong_notes_played_p = document.getElementById('wrong_notes_played');
+    feedback_h2.innerText = "Feedback";
+    lesson_name_p.innerText = "Lesson Name: " +  feedBackObj.lesson;
+    lesson_bpm_p.innerText = "Lesson BPM: " +  feedBackObj.lesson_tempo;
+    lesson_feedback_p.innerText = "Feedback: " +  feedBackObj.feedback;
+    lesson_note_duration_p.innerText = "Lesson Note Durations: " + feedBackObj.lesson_note_durations;
+    user_note_duration_p.innerText = "Your Note Durations: " +  feedBackObj.user_note_durations;
+    timing_difference_p.innerText = "Timing Difference: " + feedBackObj.percentage_difference;
+    wrong_notes_played_p.innerText = "Wrong Notes Played: " + feedBackObj.notes_not_in_lesson;
 
-        lesson_name_p.textContent = "Lesson Name: " +  feedBackObj.lesson;
-        lesson_bpm_p.textContent = "Lesson BPM: " +  feedBackObj.lesson_tempo;
-        lesson_feedback_p.textContent = "Feedback: " +  feedBackObj.feedback;
-        lesson_note_duration_p.textContent = "Lesson Note Durations: " + feedBackObj.lesson_note_durations;
-        user_note_duration_p.textContent = "Your Note Durations: " +  feedBackObj.user_note_durations;
-        timing_difference_p.textContent = "Timing Difference: " + feedBackObj.percentage_difference;
-        wrong_notes_played_p.textContent = "Wrong Notes Played: " + feedBackObj.notes_not_in_lesson;
-    }
+    getUserOnsetImage();
+    getLessonOnsetImage();
+
 }
 
 export function process_chord_feedback(feedBackObj){
@@ -117,4 +133,37 @@ function draw_feedback_overlay(coordinate_obj,wrong_note_indexes){
         }
         return 1;
     }
+}
+
+function getUserOnsetImage(){
+    fetch(BASE_URL + "/get-user-onset-image")
+    .then(response => response.blob())
+    .then(image => {
+        
+        let user_onsets_url = URL.createObjectURL(image)
+        let image_tag = document.getElementById('user_onsets');
+        image_tag.src = user_onsets_url
+        image_tag.style.height = '300px';
+        image_tag.style.width = '600px';
+    })
+    .catch(error =>{
+        console.log(error)
+    })
+}
+
+function getLessonOnsetImage(){
+    fetch(BASE_URL + "/get-lesson-onset-image")
+    .then(response => response.blob())
+    .then(image => {
+        
+        let lesson_onsets_url = URL.createObjectURL(image)
+        let image_tag = document.getElementById('lesson_onsets');
+        image_tag.src = lesson_onsets_url
+        image_tag.style.height = '300px';
+        image_tag.style.width = '600px';
+    })
+    .catch(error =>{
+        console.log(error)
+    })
+
 }

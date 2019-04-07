@@ -56,7 +56,6 @@ export function recordLesson(e){
 export function stopRecording(e){
     console.log("Stopped recording.....");
 
-
     let url = localStorage.getItem("url");
     console.log(url);
 
@@ -68,9 +67,7 @@ export function stopRecording(e){
 	recorderObj.exportWAV(createAudioElement);
     recordingPresent = true;
 
-    //clear the count in
-    let count_in_card = document.getElementById('count_in');
-    count_in_card.innerText = "";
+
 
 }
 
@@ -120,6 +117,10 @@ function post_recording(e){
     //<dirtwo> is the topic ie picking or exercises etc
     //<lesson> is the actual lesson name like: A_minor_scale_frag_1_LESSON.wav
 
+    //clear the count in
+    let count_in_card = document.getElementById('count_in');
+    count_in_card.innerText = "";
+
     let url = localStorage.getItem("url");
     //show progress bar
     $('#uploadProgressModal').modal('show');
@@ -147,11 +148,9 @@ function post_recording(e){
             $('#uploadProgressModal').modal('hide');
             if(analysis_url.includes("analyse-chords")){
                 process_chord_feedback(data);
-                showFeedbackModel();
             }
             else{
                 processFeedbackJSON(data);
-                showFeedbackModel();
             }
         },
         error: function(xhr, status, error) {
@@ -173,6 +172,7 @@ function displayCountIn(bpm){
 	//The user will be recorded straight away but having them wait until they are told to play will roughly line up
     //their playing start time with the lesson playing start time. This is done to compare the timing list
 
+    //not working yet
     let audio = new Audio(click_sound);
 
     let count_in_card = document.getElementById('count_in');
@@ -181,10 +181,6 @@ function displayCountIn(bpm){
 	let countInTimer = setInterval(function(){
         console.log(num_of_beats);
 
-
-        // $(document).ready(function(){
-        //     $('.toast').toast('show');
-        // });
         count_in_card.innerText = num_of_beats;
 		num_of_beats -= 1;
 		if(num_of_beats < 0){
@@ -224,12 +220,4 @@ function createAnalysisUrl(url){
 			return parser.protocol + "//" + parser.host + "/analyse" + parser.pathname;
 		}
 	}
-}
-
-function showFeedbackModel(){
-    //enable any popovers on page. There is one in the modal
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    })
-    $('#feedbackModal').modal('show');
 }
