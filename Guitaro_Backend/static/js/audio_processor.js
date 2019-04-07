@@ -86,17 +86,25 @@ function fetchLessonToBeNotated(){
 
     console.log("notation_url: " + notation_url);
 
-    fetch(notation_url)
-    .then(response => response.json())
-    .then(json => {
+    if(notation_url.includes("chord-notation")){
+        fetch(notation_url)
+        .then(response => response.blob())
+        .then(image => {
+            
+            let chord_image_url = URL.createObjectURL(image)
+            let image_tag = document.getElementById('chord_image');
+            image_tag.src = chord_image_url;
 
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    }else{
 
-        if(notation_url.includes("chord-notation")){
-            // Store bpm for use in audio_recorder.js to determine count in
-            localStorage.setItem("bpm", json.bpm);
-            draw_chord("lesson_notation");
-        }
-        else{
+        fetch(notation_url)
+        .then(response => response.json())
+        .then(json => {
+
             let lesson_fret_list = json.lesson_fret_list;
             let lesson_string_list = json.lesson_string_list;
             let duration_list = json.padded_duration_list;
@@ -105,12 +113,11 @@ function fetchLessonToBeNotated(){
             // Store bpm for use in audio_recorder.js to determine count in
             localStorage.setItem("bpm", json.bpm);
             draw_tab(lesson_string_list,lesson_fret_list,duration_list,total_beats,"lesson_notation");
-        }
-
-    })
-    .catch(error => {
-        console.log(error);
-    });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 }
 
 

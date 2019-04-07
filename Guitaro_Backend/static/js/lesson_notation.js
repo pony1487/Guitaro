@@ -130,25 +130,8 @@ export function draw_tab(string_list,fret_list,note_durations,total_beats,elemen
 
 export function draw_chord(element_name){
     console.log("draw chord");
-    let tab_notation = document.getElementById(element_name);
-    let notationDrawer = new NotationDrawer(tab_notation);
+    let chord_notation = document.getElementById(element_name);
 
-    let tab_note ={
-        positions: [{str: 6, fret: 0}],
-        duration: "8"
-    }
-    try{
-        notationDrawer.setNotes(tab_note);
-
-    }catch(err){
-        console.log(err);
-        console.log("index of problem: " + i);
-        console.log("fret: " + fret_list[i]);
-        console.log("String: " + string_list[i]);
-    }
-    notationDrawer.createVoice(4);
-    notationDrawer.formatAndJustify();
-    notationDrawer.render();
 }
 
 

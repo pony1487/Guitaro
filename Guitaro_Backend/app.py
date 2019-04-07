@@ -81,7 +81,7 @@ def get_lesson_from_topic(topic, lesson):
         return str(e)
 
 
-# Notate regurlar lessons
+# Notate regular lessons
 @app.route('/notation/topics/<topic>/<lesson>', methods=['GET'])
 def get_lesson_notation(topic, lesson):
     print("Test notation")
