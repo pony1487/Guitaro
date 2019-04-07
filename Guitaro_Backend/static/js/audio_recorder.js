@@ -56,6 +56,10 @@ export function recordLesson(e){
 export function stopRecording(e){
     console.log("Stopped recording.....");
 
+    // Clear the GO message
+    let count_in_card = document.getElementById('count_in');
+    count_in_card.innerText = " ";
+
     let url = localStorage.getItem("url");
     console.log(url);
 
@@ -117,9 +121,9 @@ function post_recording(e){
     //<dirtwo> is the topic ie picking or exercises etc
     //<lesson> is the actual lesson name like: A_minor_scale_frag_1_LESSON.wav
 
-    //clear the count in
+    //Inform user to scroll down to see feedback
     let count_in_card = document.getElementById('count_in');
-    count_in_card.innerText = "";
+    count_in_card.innerText = "To see detailed feddback scroll down";
 
     let url = localStorage.getItem("url");
     //show progress bar
@@ -171,10 +175,8 @@ function displayCountIn(bpm){
 	//the lessons have been recorded with a count in of 4 beats.
 	//The user will be recorded straight away but having them wait until they are told to play will roughly line up
     //their playing start time with the lesson playing start time. This is done to compare the timing list
-
-    //not working yet
-    let audio = new Audio(click_sound);
-
+    // Count will go 4,3,2,1 GO
+    
     let count_in_card = document.getElementById('count_in');
 	let count_in_seconds = (60/bpm) * 1000;
 	let num_of_beats = 4;

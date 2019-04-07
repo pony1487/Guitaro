@@ -145,6 +145,9 @@ function getUserOnsetImage(){
         image_tag.src = user_onsets_url
         image_tag.style.height = '300px';
         image_tag.style.width = '600px';
+
+        let onset_user_header = document.getElementById('onset_user_header');
+        onset_user_header.innerText = "Your Attempt";
     })
     .catch(error =>{
         console.log(error)
@@ -161,6 +164,9 @@ function getLessonOnsetImage(){
         image_tag.src = lesson_onsets_url
         image_tag.style.height = '300px';
         image_tag.style.width = '600px';
+
+        let onset_lesson_header = document.getElementById('onset_lesson_header');
+        onset_lesson_header.innerText = "Lesson";
     })
     .catch(error =>{
         console.log(error)
