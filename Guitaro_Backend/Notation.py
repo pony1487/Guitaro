@@ -65,11 +65,8 @@ class Notation:
             for j in range(0, len(self.freqs_in_recording)):
 
                 freq = self.freqs_in_recording[j]
-                # print(freq)
                 if freq in gtr_string:
                     fret = gtr_string.index(freq)
-                    s = "freq: {} fret: {}".format(freq, fret)
-                    # print("i: " + str(i) + " j: " + str(j))
                     note_locations[i][fret] = 1
         # print(DataFrame(self.played_note_locations))
         return note_locations
@@ -95,7 +92,6 @@ class Notation:
         if self.start_frets:
             # Limit it to just the first "box"
             start_fret = self.start_frets[0]
-            print("Start_fret[0]: {}\n".format(start_fret))
             for freq in self.freqs_in_recording:
 
                 for string, value in fret_mappings.items():
@@ -136,9 +132,7 @@ class Notation:
             duration, index = self.__find_nearest(note_durations, diff)
             duration = float(duration)
             duration_index = note_durations.index(duration)
-            s = "dutraion: {} note_durations.index({}) = {}".format(duration,duration,duration_index)
 
-            print(s)
             return_list.append(duration_name[duration_index])
 
         # we assume that the last note played is always the same duration as the one that came before it.
@@ -149,7 +143,6 @@ class Notation:
             second_last_note_duration = return_list[-1]
             return_list.append(second_last_note_duration)
 
-        print(return_list)
         return return_list
 
     def __get_note_duration_given_tempo(self, bpm):
@@ -195,21 +188,16 @@ class Notation:
     def __pad_note_durations(self, arr):
 
         total_beats = self.calculate_total_beats(arr)
-        print("total_beats: " + str(total_beats))
         # If there is not the correct amount of notes to fill a bar pad it whatever durations add up to make a full bar
         if total_beats % 4 != 0:
             next_multiple_of_four = total_beats + (4 - total_beats % 4)
-            print("next_multiple_of_four: " + str(next_multiple_of_four))
 
             diff = next_multiple_of_four - total_beats
-            print("diff: " + str(diff))
             for key, val in self.number_of_beats_dictionary.items():
                 if val <= diff:
                     diff = diff % val
 
-
                     arr.append(key)
-            print("arr padded: " + str(arr))
             return arr
         else:
             print("arr not padded: " + str(arr))

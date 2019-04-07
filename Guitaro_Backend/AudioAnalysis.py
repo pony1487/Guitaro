@@ -134,7 +134,8 @@ class AudioAnalysis:
             o = aubio.onset("default", win_s, hop_s, samplerate)
 
             # One threshold does not seem to work for all cases
-            o.set_threshold(1.5)
+            #o.set_threshold(1.5)
+            o.set_threshold(1.0)
 
             # list of when peaks happen at time t(seconds)
             onset_time_list = []
@@ -164,7 +165,7 @@ class AudioAnalysis:
                 total_frames += read
                 if read < hop_s: break
 
-            # self.plot_onset_image(allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc)
+            self.plot_onset_image(allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc)
             # print(onset_time_list)
             return onset_time_list
         except Exception as e:
@@ -172,6 +173,10 @@ class AudioAnalysis:
             print(error_str)
 
     def plot_onset_image(self, allsamples_max, hop_s, downsample, samplerate, onsets, desc, tdesc):
+        """
+        Taken directly from here:
+        https://github.com/aubio/aubio/blob/master/python/demos/demo_onset_plot.py
+        """
         if 1:
             # do plotting
 
@@ -201,6 +206,7 @@ class AudioAnalysis:
             plt.xlabel('time (s)')
             # plt.savefig('./images/noise_at_start_and_wrong_transient.png', dpi=300)
             plt.show()
+
 
     def get_timing_list(self):
         return self.timing_list

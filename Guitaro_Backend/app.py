@@ -5,6 +5,7 @@ from AudioComparison import AudioComparison
 from Notation import Notation
 from chordrecognition.ChordAnalyser import ChordAnalyser
 from chordrecognition.ChordComparison import ChordComparison
+from AudioFilter import AudioFilter
 from guitaroconfig import valid_directories, valid_topics, valid_plans
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
@@ -184,6 +185,11 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
+
+
+            audio_filter = AudioFilter(uploaded_file_path)
+            audio_filter.apply_filter()
+
             user_audio_analysis = AudioAnalysis(uploaded_file_path)
 
             # Analyse the lesson and the users attempt
@@ -254,6 +260,22 @@ def analyse_user_chords(dirone, dirtwo, lesson):
             return jsonify(chord_comparision.get_comparision_dict())
         else:
             return "Wrong File type: Must be wav"
+
+
+@app.route('/notate-strum/topics/strumming/<lesson>', methods=['GET'])
+def notate_strum(lesson):
+    topic_path = "topics/strumming/"
+    file_manager = FileManager(topic_path)
+    print(file_manager.get_lesson_path(lesson))
+
+    bpm = file_manager.get_tempo_from_file_name(lesson)
+
+    lesson_file_path = file_manager.get_lesson_path("/" + lesson)
+
+    lesson_analysis = AudioAnalysis(lesson_file_path)
+
+    lesson_timing_list = lesson_analysis.analyse_timing()
+    return str(lesson_timing_list)
 
 
 @app.errorhandler(404)
