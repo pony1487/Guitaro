@@ -5,8 +5,8 @@ from AudioComparison import AudioComparison
 from Notation import Notation
 from chordrecognition.ChordAnalyser import ChordAnalyser
 from chordrecognition.ChordComparison import ChordComparison
-from AudioFilter import AudioFilter
-from guitaroconfig import valid_directories, valid_topics, valid_plans
+from S3Manager import S3Manager
+from guitaroconfig import valid_topics, valid_plans,S3_BUCKET
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 from flask_jsglue import JSGlue
@@ -121,6 +121,11 @@ def get_chord_notation(plan, lesson):
     plan += "/"
     file_manager = FileManager(plan_path + plan)
 
+    # add the png extension to the lesson name
+    lesson += ".png"
+    s3_manager = S3Manager(S3_BUCKET)
+    s3_manager.get_chord_diagram(lesson)
+
     # DEBUG
     d = {
         "lesson_fret_list": [],
@@ -185,10 +190,6 @@ def analyse_user_recording(dirone, dirtwo, lesson):
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             uploaded_file_path = app.config['UPLOAD_FOLDER'] + "/" + filename
-
-
-            audio_filter = AudioFilter(uploaded_file_path)
-            audio_filter.apply_filter()
 
             user_audio_analysis = AudioAnalysis(uploaded_file_path)
 

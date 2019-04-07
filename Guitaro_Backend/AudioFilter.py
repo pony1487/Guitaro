@@ -4,6 +4,12 @@ import aubio
 class AudioFilter:
     """
     Taken from https://github.com/aubio/aubio/blob/master/python/demos/demo_filter.py
+
+    THIS IS NOT USED.
+    This was used to try and clean up the users recording by removing high and low frequencies. It did not
+    provide any improvement and in fact made the note detection worse.
+
+    https://en.wikipedia.org/wiki/A-weighting
     """
     def __init__(self,path):
         self.path = path
@@ -17,7 +23,7 @@ class AudioFilter:
         f = aubio.digital_filter(7)
         f.set_a_weighting(samplerate)
 
-        # create output file and replace original uploaded by user
+        # create output file and replace original uploaded by user. Append the word filter to end of filename
         new_file_path = self.path[:-4]
         new_file_path += "_filter.wav"
         o = aubio.sink(new_file_path, samplerate)
@@ -35,10 +41,3 @@ class AudioFilter:
             # end of file reached
             if read < s.hop_size:
                 break
-
-        # print some info
-        duration = total_frames / float(samplerate)
-        input_str = "input: {:s} ({:.2f} s, {:d} Hz)"
-        output_str = "output: {:s}, A-weighting filtered ({:d} frames total)"
-        print(input_str.format(s.uri, duration, samplerate))
-        print(output_str.format(o.uri, total_frames))
