@@ -12,6 +12,7 @@ from flask_cors import CORS
 from flask_jsglue import JSGlue
 
 import os
+from os import path
 import guitaroconfig
 import app_utils
 
@@ -117,23 +118,22 @@ def get_lesson_notation(topic, lesson):
 # Notate chord lesson
 @app.route('/chord-notation/plans/<plan>/<lesson>', methods=['GET'])
 def get_chord_notation(plan, lesson):
-    plan_path = "plans/"
-    plan += "/"
-    file_manager = FileManager(plan_path + plan)
 
     # add the png extension to the lesson name
     lesson += ".png"
+    path_to_chord_images = path.dirname(__file__)
+    path_to_chord_images = path.join(path_to_chord_images, "chord_images/" + lesson)
+
+    print(path_to_chord_images)
+
     s3_manager = S3Manager(S3_BUCKET)
     s3_manager.get_chord_diagram(lesson)
 
-    # DEBUG
-    d = {
-        "lesson_fret_list": [],
-        "lesson_string_list": [],
-        "duration_list": [],
-        "total_beats": 4
-    }
-    return jsonify(d)
+    try:
+        return send_file(path_to_chord_images, mimetype='image/png', as_attachment=True,
+                         attachment_filename=lesson)
+    except FileNotFoundError as e:
+        return str(e)
 
 
 @app.route('/plans/<plan>')

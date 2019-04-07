@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="521660ad-b1a7-4b01-8ebf-a85f9a043d7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AudioFilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/AudioFilter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/S3Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/S3Manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
@@ -75,7 +73,7 @@
           <entry key="js" value="744" />
           <entry key="json" value="33" />
           <entry key="md" value="11" />
-          <entry key="py" value="34155" />
+          <entry key="py" value="34261" />
           <entry key="txt" value="79" />
         </counts>
       </usages-collector>
@@ -87,7 +85,7 @@
           <entry key="JavaScript" value="744" />
           <entry key="Markdown" value="11" />
           <entry key="PLAIN_TEXT" value="100" />
-          <entry key="Python" value="34155" />
+          <entry key="Python" value="34261" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -120,32 +118,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="126" column="17" selection-start-line="126" selection-start-column="17" selection-end-line="126" selection-end-column="17" />
+            <state relative-caret-position="368">
+              <caret line="133" column="51" selection-start-line="133" selection-start-column="51" selection-end-line="133" selection-end-column="51" />
               <folding>
                 <element signature="e#0#79#0" expanded="true" />
                 <element signature="e#2277#3465#0" />
                 <element signature="e#3922#4124#0" />
-                <element signature="e#4225#4583#0" />
                 <element signature="e#7550#9000#0" />
-                <marker date="1554641265600" expanded="true" signature="9271:9675" ph="..." />
-                <marker date="1554641265600" expanded="true" signature="9674:9675" ph="..." />
+                <marker date="1554641849659" expanded="true" signature="9408:9812" ph="..." />
+                <marker date="1554641849659" expanded="true" signature="9811:9812" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/S3Manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -153,7 +147,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FileManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
+            <state relative-caret-position="105">
               <caret line="7" column="84" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="84" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -287,8 +281,8 @@
         <option value="$PROJECT_DIR$/Notation.py" />
         <option value="$PROJECT_DIR$/AudioAnalysis.py" />
         <option value="$PROJECT_DIR$/AudioFilter.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/S3Manager.py" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -706,7 +700,7 @@
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2128788" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2128788" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -1076,7 +1070,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FileManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
+        <state relative-caret-position="105">
           <caret line="7" column="84" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="84" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -1084,28 +1078,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/S3Manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="126" column="17" selection-start-line="126" selection-start-column="17" selection-end-line="126" selection-end-column="17" />
+        <state relative-caret-position="368">
+          <caret line="133" column="51" selection-start-line="133" selection-start-column="51" selection-end-line="133" selection-end-column="51" />
           <folding>
             <element signature="e#0#79#0" expanded="true" />
             <element signature="e#2277#3465#0" />
             <element signature="e#3922#4124#0" />
-            <element signature="e#4225#4583#0" />
             <element signature="e#7550#9000#0" />
-            <marker date="1554641265600" expanded="true" signature="9271:9675" ph="..." />
-            <marker date="1554641265600" expanded="true" signature="9674:9675" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/S3Manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <marker date="1554641849659" expanded="true" signature="9408:9812" ph="..." />
+            <marker date="1554641849659" expanded="true" signature="9811:9812" ph="..." />
           </folding>
         </state>
       </provider>
