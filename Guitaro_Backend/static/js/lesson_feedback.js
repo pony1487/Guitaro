@@ -25,7 +25,7 @@ export function processFeedbackJSON(feedBackObj){
 
 
     ///////////////////////////////////
-    //Test data as I dont have a guitar to play in the library
+    //Test data as I dont have a guitar to play in the library. Use this for videos
     ///////////////////////////////////
     // let user_fret_list = [5,8,4,7,6,7]
     // let user_note_list = ["A","C","C#","E","G#","A"]

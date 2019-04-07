@@ -4,6 +4,9 @@ from os import path
 
 
 class S3Manager:
+    """
+    The chord images that are stored in S3 were generated from here https://chordpix.com/
+    """
 
     def __init__(self, bucket):
         self.bucket = bucket
