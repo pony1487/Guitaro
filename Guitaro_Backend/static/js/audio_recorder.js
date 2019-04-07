@@ -1,8 +1,12 @@
 import 'jquery';
 import 'bootstrap';
 
-//NOTE to self: This is how you add mutliple js files into one dist bundle. Export it from <blah>.js
-//var processFeedbackJSON = require('./lesson_feedback');
+
+let click_sound = require('../audio/click_sound.mp3');
+
+console.log(click_sound);
+
+
 import {processFeedbackJSON,process_chord_feedback} from './lesson_feedback';
 
 
@@ -41,7 +45,7 @@ export function recordLesson(e){
 
             recorderObj.record();
             displayCountIn(bpm);
-			console.log("Recording......");
+            console.log("Recording......");
 
 		}).catch(error => {
 			console.log(error);
@@ -63,6 +67,10 @@ export function stopRecording(e){
 	//Create wav blog to be posted to server for analysis
 	recorderObj.exportWAV(createAudioElement);
     recordingPresent = true;
+
+    //clear the count in
+    let count_in_card = document.getElementById('count_in');
+    count_in_card.innerText = "";
 
 }
 
@@ -165,24 +173,29 @@ function displayCountIn(bpm){
 	//The user will be recorded straight away but having them wait until they are told to play will roughly line up
     //their playing start time with the lesson playing start time. This is done to compare the timing list
 
-    let count_in_toast = document.getElementById('count_in_toast');
+    let audio = new Audio(click_sound);
+
+    let count_in_card = document.getElementById('count_in');
 	let count_in_seconds = (60/bpm) * 1000;
 	let num_of_beats = 4;
 	let countInTimer = setInterval(function(){
         console.log(num_of_beats);
 
-        $(document).ready(function(){
-            $('.toast').toast('show');
-        });
-        count_in_toast.innerText = num_of_beats;
-		num_of_beats -= 1;
-		if(num_of_beats <= 0){
-			clearInterval(countInTimer);
 
+        // $(document).ready(function(){
+        //     $('.toast').toast('show');
+        // });
+        count_in_card.innerText = num_of_beats;
+		num_of_beats -= 1;
+		if(num_of_beats < 0){
+            count_in_card.innerText = "GO!!!!";
+			clearInterval(countInTimer);
+            
 		}
     }, count_in_seconds);
-    count_in_div.innerText = "";
+    
 }
+
 
 
 function createAnalysisUrl(url){

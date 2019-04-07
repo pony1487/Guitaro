@@ -6,7 +6,7 @@
 
 console.log("Hello from audio_processor");
 
-//const CONFIG = require('./config.json');
+const CONFIG = require('./config.json');
 
 import { stopRecording,recordLesson } from './audio_recorder';
 import { draw_tab,draw_chord } from './lesson_notation';

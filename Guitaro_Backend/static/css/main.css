@@ -9,6 +9,10 @@ body {
     border: 1px solid black;
 } */
 
+#count_in{
+    font-size: 40px;
+}
+
 
 canvas {
     position:absolute;
