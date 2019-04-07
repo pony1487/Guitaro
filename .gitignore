@@ -39,6 +39,10 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 
+# guitar chord images
+*.png
+*.jpg
+
 
 
 
