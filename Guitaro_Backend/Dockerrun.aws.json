@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "546945789221.dkr.ecr.eu-west-1.amazonaws.com/guitaro_backend:latest",
+    "Name": "546945789221.dkr.ecr.eu-west-1.amazonaws.com/guitaro_backend:submission",
     "Update": "true"
   },
   "Ports": [
