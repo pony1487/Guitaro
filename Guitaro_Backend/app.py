@@ -23,7 +23,6 @@ CORS(app)
 app.config['UPLOAD_FOLDER'] = guitaroconfig.UPLOAD_FOLDER
 
 
-# MOVE THESE TO THERE OWN FILE
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -44,7 +43,6 @@ def audio_processor_page():
     return render_template("audio_processor.html")
 
 #############################################
-
 
 @app.route('/topics')
 def list_topics():
@@ -281,7 +279,7 @@ def notate_strum(lesson):
 def get_user_onset_image():
     image_path = "./onset_images/user_recording.png"
     try:
-        return send_file(image_path, mimetype="image/png", as_attachment=True,
+        return send_file(image_path, mimetype="image/png",
                          attachment_filename="user_recording")
     except FileNotFoundError as e:
         return str(e)
@@ -291,7 +289,7 @@ def get_user_onset_image():
 def get_lesson_onset_image():
     image_path = "./onset_images/lesson_onset.png"
     try:
-        return send_file(image_path, mimetype="image/png", as_attachment=True,
+        return send_file(image_path, mimetype="image/png",
                          attachment_filename="lesson_onset")
     except FileNotFoundError as e:
         return str(e)

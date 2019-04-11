@@ -123,7 +123,7 @@ function post_recording(e){
 
     //Inform user to scroll down to see feedback
     let count_in_card = document.getElementById('count_in');
-    count_in_card.innerText = "To see detailed feddback scroll down";
+    count_in_card.innerText = "To see detailed feedback scroll down";
 
     let url = localStorage.getItem("url");
     //show progress bar

@@ -18,10 +18,6 @@ else if(environment == 'development'){
     PLANS_URL = CONFIG.localPlans;
 }
 
-console.log(environment);
-console.log(BASE_URL);
-console.log(TOPICS_URL);
-console.log(PLANS_URL);
 
 $(document).ready(function() {
 
@@ -110,7 +106,6 @@ function list_lesson_in_plan(path){
         .then(response => response.json())
         .then(json => {
             let list = json["files"];
-            console.log(list);
 
             if(!$("#lessons_in_plan_container").is(":visible")){
                 $("#lessons_in_plan_container").show();

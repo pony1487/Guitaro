@@ -1,4 +1,4 @@
-import { draw_tab,draw_chord } from './lesson_notation';
+import { draw_tab } from './lesson_notation';
 
 const CONFIG = require('./config.json');
 let BASE_URL;
@@ -23,26 +23,6 @@ export function processFeedbackJSON(feedBackObj){
     let user_note_durations = feedBackObj.user_duration_list;
     let user_total_beats = feedBackObj.total_beats;
 
-
-    ///////////////////////////////////
-    //Test data as I dont have a guitar to play in the library. Use this for videos
-    ///////////////////////////////////
-    // let user_fret_list = [5,8,4,7,6,7]
-    // let user_note_list = ["A","C","C#","E","G#","A"]
-    // let user_string_list = ["E","E","A","A","D","D"]
-    // let wrong_note_indexes = [2,4];
-
-    // let user_fret_list = [3,6,3,5,5,3,5,3,6,3,6];
-    // let user_note_list = ["G","Bb","C","D","G","Bb","C","D","F","G","Bb"];
-    // let user_string_list = ["E","E","A","A","D","G","G","B","B","e","e"];
-
-
-    // let user_fret_list = [8,10,7,8,10,7,9,10]
-    // let user_note_list = ["C","D","E","F","G","A","B","C"]
-    // let user_string_list = ["E","E","A","A","A","D","D","D"]
-
-    /////////////////////////////////////////////
-
     //draw user
     let note_coordinates = draw_tab(user_string_list,user_fret_list,user_note_durations,user_total_beats,"user_notation");
     let success = draw_feedback_overlay(note_coordinates,wrong_note_indexes);
@@ -65,15 +45,14 @@ export function processFeedbackJSON(feedBackObj){
     timing_difference_p.innerText = "Timing Difference: " + feedBackObj.percentage_difference;
     wrong_notes_played_p.innerText = "Wrong Notes Played: " + feedBackObj.notes_not_in_lesson;
 
-    getUserOnsetImage();
-    getLessonOnsetImage();
+    //Not working in prod but works locally
+    //getUserOnsetImage();
+    //getLessonOnsetImage();
 
 }
 
 export function process_chord_feedback(feedBackObj){
 
-    console.log(feedBackObj);
-    draw_chord("user_notation");
 
     let lesson_name_p = document.getElementById('lesson_name');
     lesson_name_p.textContent = "Lesson Name: " +  feedBackObj.lesson;
@@ -135,6 +114,7 @@ function draw_feedback_overlay(coordinate_obj,wrong_note_indexes){
     }
 }
 
+// Not working in production but works locally
 function getUserOnsetImage(){
     fetch(BASE_URL + "/get-user-onset-image")
     .then(response => response.blob())

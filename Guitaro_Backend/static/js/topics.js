@@ -20,11 +20,6 @@ else if(environment == 'development'){
     PLANS_URL = CONFIG.localPlans;
 }
 
-console.log("environment: " + environment);
-console.log("BASE_URL: " + BASE_URL);
-console.log("TOPICS_URL: " + TOPICS_URL);
-console.log("PLANS_URL: " + PLANS_URL);
-
 $(document).ready(function() {
     init();
 });
@@ -94,7 +89,6 @@ function addEventListenerToTopic(lesson_path){
 }
 
 function clickPlan(e){
-    console.log(e.target.innerText);
     list_lesson_in_topic(e.target.innerText);
 }
 
@@ -131,7 +125,6 @@ function addEventListenerToLesson(lesson_path){
     let ul = document.getElementById('lesson_in_topic_list');
     let buttons = ul.getElementsByTagName('button');
 
-    console.log("addEventListenerToLesson");
     for(let i = 0; i < buttons.length;i++)
     {
         buttons[i].addEventListener('click', clickLesson);
